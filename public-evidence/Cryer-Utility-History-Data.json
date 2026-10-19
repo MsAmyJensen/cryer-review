@@ -1,0 +1,957 @@
+{
+  "version": "2026-09-23-audit-recovery",
+  "scope": "Original Town audit-source history. Not a replacement for unresolved Cryer count-once totals.",
+  "waterSewer": [
+    {
+      "year": 2018,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 10182546,
+      "personnel": 2454810,
+      "personnelDepartmentRows": [
+        300579,
+        268690,
+        582644,
+        420977,
+        415539,
+        466381
+      ],
+      "otherRecurringIncludingShared": 3506887,
+      "recurringIncludingShared": 5961697,
+      "operatingFundCapital": 409831,
+      "departmentalDebt": 3811018,
+      "cashPrincipal": 3349500,
+      "cashInterest": 445510,
+      "cashDebt": 3795010,
+      "cashDebtMinusDepartmentDebt": -16008,
+      "outwardTransfers": 1902144,
+      "inwardTransfers": 4375684,
+      "sharedAllocation": null,
+      "recurringAfterShared": null,
+      "waterRevenue": 4092154,
+      "sewerRevenue": 4428334,
+      "developmentFees": null,
+      "otherRevenue": 1744469,
+      "investmentRevenue": 15745,
+      "revenueTotal": 10280702,
+      "cashGoodsAndServices": 3518784,
+      "cashEmployees": 2456455,
+      "cashCapitalAcquisition": 1946686,
+      "cashBondIssueCosts": 361573,
+      "cashPaymentsTotal": 12078508,
+      "source": {
+        "filename": "Annual Comprehensive Financial Report Year Ended June 30, 2018.pdf",
+        "original_pdf_pages": [
+          49,
+          108,
+          109,
+          110,
+          111,
+          114
+        ],
+        "printed_reference": "Schedule 11 pp.88; Schedule 12 pp.89–91; Schedule 15 p.94; Exhibit 8 p.29",
+        "packet_page": 1,
+        "packet_pages": {
+          "49": 1,
+          "108": 2,
+          "109": 3,
+          "110": 4,
+          "111": 5,
+          "114": 6
+        },
+        "sha256": "578ef6226a5a9065970b91c12a194df34e0a2af1b31b8724fc3b1eebb677aae7"
+      }
+    },
+    {
+      "year": 2019,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 8949676,
+      "personnel": 2574451,
+      "personnelDepartmentRows": [
+        298807,
+        258624,
+        606122,
+        471883,
+        462248,
+        476767
+      ],
+      "otherRecurringIncludingShared": 4205014,
+      "recurringIncludingShared": 6779465,
+      "operatingFundCapital": 232338,
+      "departmentalDebt": 1937873,
+      "cashPrincipal": 1171275,
+      "cashInterest": 766598,
+      "cashDebt": 1937873,
+      "cashDebtMinusDepartmentDebt": 0,
+      "outwardTransfers": 2986594,
+      "inwardTransfers": 466470,
+      "sharedAllocation": null,
+      "recurringAfterShared": null,
+      "waterRevenue": 4610474,
+      "sewerRevenue": 4773747,
+      "developmentFees": null,
+      "otherRevenue": 2506530,
+      "investmentRevenue": 29325,
+      "revenueTotal": 11920076,
+      "cashGoodsAndServices": 4523241,
+      "cashEmployees": 2548974,
+      "cashCapitalAcquisition": 6172577,
+      "cashBondIssueCosts": 0,
+      "cashPaymentsTotal": 15182665,
+      "source": {
+        "filename": "Annual Comprehensive Financial Report Year Ended June 30, 2019.pdf",
+        "original_pdf_pages": [
+          49,
+          108,
+          109,
+          110,
+          111,
+          114
+        ],
+        "printed_reference": "Schedule 11 p.88; Schedule 12 pp.89–91; Schedule 15 p.94; Exhibit 8 p.29",
+        "packet_page": 7,
+        "packet_pages": {
+          "49": 7,
+          "108": 8,
+          "109": 9,
+          "110": 10,
+          "111": 11,
+          "114": 12
+        },
+        "sha256": "846b43a917b02dd134f41f06789c47f03c1e9467553aa99b056eabcbb377e36e"
+      }
+    },
+    {
+      "year": 2020,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 8489304,
+      "personnel": 2780910,
+      "personnelDepartmentRows": [
+        363968,
+        305356,
+        636084,
+        495595,
+        485206,
+        494701
+      ],
+      "otherRecurringIncludingShared": 3370745,
+      "recurringIncludingShared": 6151655,
+      "operatingFundCapital": 338241,
+      "departmentalDebt": 1999408,
+      "cashPrincipal": 1189949,
+      "cashInterest": 809460,
+      "cashDebt": 1999409,
+      "cashDebtMinusDepartmentDebt": 1,
+      "outwardTransfers": 576323,
+      "inwardTransfers": 457957,
+      "sharedAllocation": 1439866.03,
+      "recurringAfterShared": 4711788.97,
+      "waterRevenue": 4980554,
+      "sewerRevenue": 4974432,
+      "developmentFees": 456628,
+      "otherRevenue": 310880,
+      "investmentRevenue": 35144,
+      "revenueTotal": 10757638,
+      "cashGoodsAndServices": 3272139,
+      "cashEmployees": 2762718,
+      "cashCapitalAcquisition": 2434452,
+      "cashBondIssueCosts": 0,
+      "cashPaymentsTotal": 10468718,
+      "source": {
+        "filename": "Hillsborough-2020-Audit.pdf",
+        "original_pdf_pages": [
+          46,
+          103,
+          104,
+          105,
+          106,
+          112
+        ],
+        "printed_reference": "Schedule 12 p.86; Schedule 13 pp.87–89; Schedule 19 p.95; Exhibit 8 p.29",
+        "packet_page": 13,
+        "packet_pages": {
+          "46": 13,
+          "103": 14,
+          "104": 15,
+          "105": 16,
+          "106": 17,
+          "112": 18
+        },
+        "sha256": "2cfd3c8992367067880b981b65d20702a928652a49372fb8876b044c207e99dd"
+      }
+    },
+    {
+      "year": 2021,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 8874625,
+      "personnel": 2813884,
+      "personnelDepartmentRows": [
+        410691,
+        312566,
+        592720,
+        504850,
+        490130,
+        502927
+      ],
+      "otherRecurringIncludingShared": 3766029,
+      "recurringIncludingShared": 6579913,
+      "operatingFundCapital": 13561,
+      "departmentalDebt": 2281151,
+      "cashPrincipal": 1424933,
+      "cashInterest": 856218,
+      "cashDebt": 2281151,
+      "cashDebtMinusDepartmentDebt": 0,
+      "outwardTransfers": 740332,
+      "inwardTransfers": 181149,
+      "sharedAllocation": 1648166.14,
+      "recurringAfterShared": 4931746.86,
+      "waterRevenue": 4942081,
+      "sewerRevenue": 4901924,
+      "developmentFees": 590332,
+      "otherRevenue": 396474,
+      "investmentRevenue": 375,
+      "revenueTotal": 10831186,
+      "cashGoodsAndServices": 3726164,
+      "cashEmployees": 2828031,
+      "cashCapitalAcquisition": 2063213,
+      "cashBondIssueCosts": 0,
+      "cashPaymentsTotal": 10898559,
+      "source": {
+        "filename": "Audit 2021.pdf",
+        "original_pdf_pages": [
+          48,
+          109,
+          110,
+          111,
+          118
+        ],
+        "printed_reference": "Schedule 11 pp.80–82; Schedule 18 p.89; Exhibit 8 p.22",
+        "packet_page": 19,
+        "packet_pages": {
+          "48": 19,
+          "109": 20,
+          "110": 21,
+          "111": 22,
+          "118": 23
+        },
+        "sha256": "dda5da6d08004c85b1535cb23094def4ccf27bdb0428c92043f188dc80df7e58"
+      }
+    },
+    {
+      "year": 2022,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 9747311,
+      "personnel": 2754543,
+      "personnelDepartmentRows": [
+        348249,
+        326543,
+        509732,
+        544750,
+        472258,
+        553011
+      ],
+      "otherRecurringIncludingShared": 4316928,
+      "recurringIncludingShared": 7071471,
+      "operatingFundCapital": 441708,
+      "departmentalDebt": 2234132,
+      "cashPrincipal": 1418557,
+      "cashInterest": 815575,
+      "cashDebt": 2234132,
+      "cashDebtMinusDepartmentDebt": 0,
+      "outwardTransfers": 691032,
+      "inwardTransfers": 0,
+      "sharedAllocation": 2030204.0,
+      "recurringAfterShared": 5041267.0,
+      "waterRevenue": 5247699,
+      "sewerRevenue": 5297371,
+      "developmentFees": 263891,
+      "otherRevenue": 236744,
+      "investmentRevenue": 1341,
+      "revenueTotal": 11047046,
+      "cashGoodsAndServices": 4101116,
+      "cashEmployees": 2734292,
+      "cashCapitalAcquisition": 2134182,
+      "cashBondIssueCosts": 0,
+      "cashPaymentsTotal": 11203722,
+      "source": {
+        "filename": "Annual Financial Report_ Year Ended June 30, 2022.pdf",
+        "original_pdf_pages": [
+          47,
+          111,
+          112,
+          113,
+          121
+        ],
+        "printed_reference": "Schedule 10 pp.82–84; Schedule 18 p.92; Exhibit 8 p.24",
+        "packet_page": 24,
+        "packet_pages": {
+          "47": 24,
+          "111": 25,
+          "112": 26,
+          "113": 27,
+          "121": 28
+        },
+        "sha256": "d688c0ba85852c1a29b0286b7657e73d003a7b7b44a6fe2019b62af77b2b3e34"
+      }
+    },
+    {
+      "year": 2023,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 10243983,
+      "personnel": 3354082,
+      "personnelDepartmentRows": [
+        553931,
+        340773,
+        617133,
+        666174,
+        546578,
+        629493
+      ],
+      "otherRecurringIncludingShared": 4533068,
+      "recurringIncludingShared": 7887150,
+      "operatingFundCapital": 146265,
+      "departmentalDebt": 2210568,
+      "cashPrincipal": 1427474,
+      "cashInterest": 783094,
+      "cashDebt": 2210568,
+      "cashDebtMinusDepartmentDebt": 0,
+      "outwardTransfers": 349969,
+      "inwardTransfers": 0,
+      "sharedAllocation": 2251164.19,
+      "recurringAfterShared": 5635985.81,
+      "waterRevenue": 5481086,
+      "sewerRevenue": 5439458,
+      "developmentFees": 179377,
+      "otherRevenue": 390138,
+      "investmentRevenue": 387355,
+      "revenueTotal": 11877414,
+      "cashGoodsAndServices": 4883404,
+      "cashEmployees": 3298950,
+      "cashCapitalAcquisition": 348189,
+      "cashBondIssueCosts": 0,
+      "cashPaymentsTotal": 10741111,
+      "source": {
+        "filename": "Annual Financial Report_ Year Ended June 30, 2023.pdf",
+        "original_pdf_pages": [
+          52,
+          114,
+          115,
+          116,
+          124
+        ],
+        "printed_reference": "Schedule 8 pp.82–84; Schedule 16 p.92; Exhibit 8 p.25",
+        "packet_page": 29,
+        "packet_pages": {
+          "52": 29,
+          "114": 30,
+          "115": 31,
+          "116": 32,
+          "124": 33
+        },
+        "sha256": "b3413df16b3a701b619e73d0fc425df5693ea5639933450b15d931ca20b4a6fb"
+      }
+    },
+    {
+      "year": 2024,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 11400648,
+      "personnel": 3643557,
+      "personnelDepartmentRows": [
+        555454,
+        366379,
+        713629,
+        736606,
+        523617,
+        747872
+      ],
+      "otherRecurringIncludingShared": 5609676,
+      "recurringIncludingShared": 9253233,
+      "operatingFundCapital": 480797,
+      "departmentalDebt": 1666618,
+      "cashPrincipal": 1435421,
+      "cashInterest": 672243,
+      "cashDebt": 2107664,
+      "cashDebtMinusDepartmentDebt": 441046,
+      "outwardTransfers": 4198070,
+      "inwardTransfers": 2081540,
+      "sharedAllocation": 2467398.99,
+      "recurringAfterShared": 6785834.01,
+      "waterRevenue": 5797278,
+      "sewerRevenue": 5785707,
+      "developmentFees": 1444422,
+      "otherRevenue": 555146,
+      "investmentRevenue": 637441,
+      "revenueTotal": 14219994,
+      "cashGoodsAndServices": 7107824,
+      "cashEmployees": 3624111,
+      "cashCapitalAcquisition": 3056059,
+      "cashBondIssueCosts": 0,
+      "cashPaymentsTotal": 15895658,
+      "source": {
+        "filename": "Annual Financial Report_ Year Ended June 30, 2024.pdf",
+        "original_pdf_pages": [
+          45,
+          110,
+          111,
+          112,
+          120
+        ],
+        "printed_reference": "Schedule 9 pp.87–89; Schedule 17 p.97; Exhibit 8 p.25",
+        "packet_page": 34,
+        "packet_pages": {
+          "45": 34,
+          "110": 35,
+          "111": 36,
+          "112": 37,
+          "120": 38
+        },
+        "sha256": "dd2892d97a2e9ab83e37d1c1438874597d06183500057e47e07b649c88359b47"
+      }
+    },
+    {
+      "year": 2025,
+      "status": "Actual — audit budgetary schedules",
+      "departmentalSpending": 11974615,
+      "personnel": 4022977,
+      "personnelDepartmentRows": [
+        447172,
+        434397,
+        799190,
+        875728,
+        680479,
+        786011
+      ],
+      "otherRecurringIncludingShared": 5912383,
+      "recurringIncludingShared": 9935360,
+      "operatingFundCapital": 353939,
+      "departmentalDebt": 1685316,
+      "cashPrincipal": 1444402,
+      "cashInterest": 655763,
+      "cashDebt": 2100165,
+      "cashDebtMinusDepartmentDebt": 414849,
+      "outwardTransfers": 3325127,
+      "inwardTransfers": 213523,
+      "sharedAllocation": 2879873.82,
+      "recurringAfterShared": 7055486.18,
+      "waterRevenue": 6436944,
+      "sewerRevenue": 6537562,
+      "developmentFees": 111584,
+      "otherRevenue": 854974,
+      "investmentRevenue": 631710,
+      "revenueTotal": 14572774,
+      "cashGoodsAndServices": 6952118,
+      "cashEmployees": 4246755,
+      "cashCapitalAcquisition": 2249999,
+      "cashBondIssueCosts": 0,
+      "cashPaymentsTotal": 15549037,
+      "source": {
+        "filename": "_Hillsborough 2025 Audit - Stamped.pdf",
+        "original_pdf_pages": [
+          45,
+          110,
+          111,
+          112,
+          119
+        ],
+        "printed_reference": "Schedule 9 pp.87–89; Schedule 16 p.96; Exhibit 8 p.25",
+        "packet_page": 39,
+        "packet_pages": {
+          "45": 39,
+          "110": 40,
+          "111": 41,
+          "112": 42,
+          "119": 43
+        },
+        "sha256": "218853ec377adf5dd59819163054022341eb0f9ae64e4da94c3b10750dbefd23"
+      }
+    }
+  ],
+  "stormwater": [
+    {
+      "year": 2018,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 638441,
+      "stormwaterCharges": 633191,
+      "departmentalSpending": 448422,
+      "personnel": 206086,
+      "otherRecurringIncludingShared": 242336,
+      "capital": 0,
+      "cashDebt": 0,
+      "outwardTransfers": 0,
+      "sharedAllocation": null,
+      "source": {
+        "filename": "Annual Comprehensive Financial Report Year Ended June 30, 2018.pdf",
+        "original_pdf_pages": [
+          49,
+          108,
+          109,
+          110,
+          111,
+          114
+        ],
+        "printed_reference": "Schedule 11 pp.88; Schedule 12 pp.89–91; Schedule 15 p.94; Exhibit 8 p.29",
+        "packet_page": 1,
+        "packet_pages": {
+          "49": 1,
+          "108": 2,
+          "109": 3,
+          "110": 4,
+          "111": 5,
+          "114": 6
+        },
+        "sha256": "578ef6226a5a9065970b91c12a194df34e0a2af1b31b8724fc3b1eebb677aae7"
+      }
+    },
+    {
+      "year": 2019,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 659071,
+      "stormwaterCharges": 650296,
+      "departmentalSpending": 541755,
+      "personnel": 246143,
+      "otherRecurringIncludingShared": 264006,
+      "capital": 31606,
+      "cashDebt": 0,
+      "outwardTransfers": 0,
+      "sharedAllocation": null,
+      "source": {
+        "filename": "Annual Comprehensive Financial Report Year Ended June 30, 2019.pdf",
+        "original_pdf_pages": [
+          49,
+          108,
+          109,
+          110,
+          111,
+          114
+        ],
+        "printed_reference": "Schedule 11 p.88; Schedule 12 pp.89–91; Schedule 15 p.94; Exhibit 8 p.29",
+        "packet_page": 7,
+        "packet_pages": {
+          "49": 7,
+          "108": 8,
+          "109": 9,
+          "110": 10,
+          "111": 11,
+          "114": 12
+        },
+        "sha256": "846b43a917b02dd134f41f06789c47f03c1e9467553aa99b056eabcbb377e36e"
+      }
+    },
+    {
+      "year": 2020,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 670877,
+      "stormwaterCharges": 666355,
+      "departmentalSpending": 491508,
+      "personnel": 265927,
+      "otherRecurringIncludingShared": 191768,
+      "capital": 33813,
+      "cashDebt": 0,
+      "outwardTransfers": 0,
+      "sharedAllocation": 81384.52,
+      "source": {
+        "filename": "Hillsborough-2020-Audit.pdf",
+        "original_pdf_pages": [
+          46,
+          103,
+          104,
+          105,
+          106,
+          112
+        ],
+        "printed_reference": "Schedule 12 p.86; Schedule 13 pp.87–89; Schedule 19 p.95; Exhibit 8 p.29",
+        "packet_page": 13,
+        "packet_pages": {
+          "46": 13,
+          "103": 14,
+          "104": 15,
+          "105": 16,
+          "106": 17,
+          "112": 18
+        },
+        "sha256": "2cfd3c8992367067880b981b65d20702a928652a49372fb8876b044c207e99dd"
+      }
+    },
+    {
+      "year": 2021,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 702526,
+      "stormwaterCharges": 702276,
+      "departmentalSpending": 504879,
+      "personnel": 267202,
+      "otherRecurringIncludingShared": 237677,
+      "capital": 0,
+      "cashDebt": 0,
+      "outwardTransfers": 100000,
+      "sharedAllocation": 98733.19,
+      "source": {
+        "filename": "Audit 2021.pdf",
+        "original_pdf_pages": [
+          48,
+          109,
+          110,
+          111,
+          118
+        ],
+        "printed_reference": "Schedule 11 pp.80–82; Schedule 18 p.89; Exhibit 8 p.22",
+        "packet_page": 19,
+        "packet_pages": {
+          "48": 19,
+          "109": 20,
+          "110": 21,
+          "111": 22,
+          "118": 23
+        },
+        "sha256": "dda5da6d08004c85b1535cb23094def4ccf27bdb0428c92043f188dc80df7e58"
+      }
+    },
+    {
+      "year": 2022,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 720094,
+      "stormwaterCharges": 718994,
+      "departmentalSpending": 594323,
+      "personnel": 265355,
+      "otherRecurringIncludingShared": 328968,
+      "capital": 0,
+      "cashDebt": 0,
+      "outwardTransfers": 0,
+      "sharedAllocation": 110935,
+      "source": {
+        "filename": "Annual Financial Report_ Year Ended June 30, 2022.pdf",
+        "original_pdf_pages": [
+          47,
+          111,
+          112,
+          113,
+          121
+        ],
+        "printed_reference": "Schedule 10 pp.82–84; Schedule 18 p.92; Exhibit 8 p.24",
+        "packet_page": 24,
+        "packet_pages": {
+          "47": 24,
+          "111": 25,
+          "112": 26,
+          "113": 27,
+          "121": 28
+        },
+        "sha256": "d688c0ba85852c1a29b0286b7657e73d003a7b7b44a6fe2019b62af77b2b3e34"
+      }
+    },
+    {
+      "year": 2023,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 758074,
+      "stormwaterCharges": 729455,
+      "departmentalSpending": 692717,
+      "personnel": 340241,
+      "otherRecurringIncludingShared": 292491,
+      "capital": 59985,
+      "cashDebt": 0,
+      "outwardTransfers": 0,
+      "sharedAllocation": 155636.14,
+      "source": {
+        "filename": "Annual Financial Report_ Year Ended June 30, 2023.pdf",
+        "original_pdf_pages": [
+          52,
+          114,
+          115,
+          116,
+          124
+        ],
+        "printed_reference": "Schedule 8 pp.82–84; Schedule 16 p.92; Exhibit 8 p.25",
+        "packet_page": 29,
+        "packet_pages": {
+          "52": 29,
+          "114": 30,
+          "115": 31,
+          "116": 32,
+          "124": 33
+        },
+        "sha256": "b3413df16b3a701b619e73d0fc425df5693ea5639933450b15d931ca20b4a6fb"
+      }
+    },
+    {
+      "year": 2024,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 804722,
+      "stormwaterCharges": 756872,
+      "departmentalSpending": 824605,
+      "personnel": 399465,
+      "otherRecurringIncludingShared": 348750,
+      "capital": 76390,
+      "cashDebt": 0,
+      "outwardTransfers": 0,
+      "sharedAllocation": 164156.22,
+      "source": {
+        "filename": "Annual Financial Report_ Year Ended June 30, 2024.pdf",
+        "original_pdf_pages": [
+          45,
+          110,
+          111,
+          112,
+          120
+        ],
+        "printed_reference": "Schedule 9 pp.87–89; Schedule 17 p.97; Exhibit 8 p.25",
+        "packet_page": 34,
+        "packet_pages": {
+          "45": 34,
+          "110": 35,
+          "111": 36,
+          "112": 37,
+          "120": 38
+        },
+        "sha256": "dd2892d97a2e9ab83e37d1c1438874597d06183500057e47e07b649c88359b47"
+      }
+    },
+    {
+      "year": 2025,
+      "status": "Actual — audit budgetary schedules",
+      "revenueTotal": 930756,
+      "stormwaterCharges": 879385,
+      "departmentalSpending": 822193,
+      "personnel": 461221,
+      "otherRecurringIncludingShared": 360972,
+      "capital": 0,
+      "cashDebt": 0,
+      "outwardTransfers": 75000,
+      "sharedAllocation": 259153,
+      "source": {
+        "filename": "_Hillsborough 2025 Audit - Stamped.pdf",
+        "original_pdf_pages": [
+          45,
+          110,
+          111,
+          112,
+          119
+        ],
+        "printed_reference": "Schedule 9 pp.87–89; Schedule 16 p.96; Exhibit 8 p.25",
+        "packet_page": 39,
+        "packet_pages": {
+          "45": 39,
+          "110": 40,
+          "111": 41,
+          "112": 42,
+          "119": 43
+        },
+        "sha256": "218853ec377adf5dd59819163054022341eb0f9ae64e4da94c3b10750dbefd23"
+      }
+    }
+  ],
+  "sources": {
+    "2018": {
+      "filename": "Annual Comprehensive Financial Report Year Ended June 30, 2018.pdf",
+      "original_pdf_pages": [
+        49,
+        108,
+        109,
+        110,
+        111,
+        114
+      ],
+      "printed_reference": "Schedule 11 pp.88; Schedule 12 pp.89–91; Schedule 15 p.94; Exhibit 8 p.29",
+      "packet_page": 1,
+      "packet_pages": {
+        "49": 1,
+        "108": 2,
+        "109": 3,
+        "110": 4,
+        "111": 5,
+        "114": 6
+      },
+      "sha256": "578ef6226a5a9065970b91c12a194df34e0a2af1b31b8724fc3b1eebb677aae7"
+    },
+    "2019": {
+      "filename": "Annual Comprehensive Financial Report Year Ended June 30, 2019.pdf",
+      "original_pdf_pages": [
+        49,
+        108,
+        109,
+        110,
+        111,
+        114
+      ],
+      "printed_reference": "Schedule 11 p.88; Schedule 12 pp.89–91; Schedule 15 p.94; Exhibit 8 p.29",
+      "packet_page": 7,
+      "packet_pages": {
+        "49": 7,
+        "108": 8,
+        "109": 9,
+        "110": 10,
+        "111": 11,
+        "114": 12
+      },
+      "sha256": "846b43a917b02dd134f41f06789c47f03c1e9467553aa99b056eabcbb377e36e"
+    },
+    "2020": {
+      "filename": "Hillsborough-2020-Audit.pdf",
+      "original_pdf_pages": [
+        46,
+        103,
+        104,
+        105,
+        106,
+        112
+      ],
+      "printed_reference": "Schedule 12 p.86; Schedule 13 pp.87–89; Schedule 19 p.95; Exhibit 8 p.29",
+      "packet_page": 13,
+      "packet_pages": {
+        "46": 13,
+        "103": 14,
+        "104": 15,
+        "105": 16,
+        "106": 17,
+        "112": 18
+      },
+      "sha256": "2cfd3c8992367067880b981b65d20702a928652a49372fb8876b044c207e99dd"
+    },
+    "2021": {
+      "filename": "Audit 2021.pdf",
+      "original_pdf_pages": [
+        48,
+        109,
+        110,
+        111,
+        118
+      ],
+      "printed_reference": "Schedule 11 pp.80–82; Schedule 18 p.89; Exhibit 8 p.22",
+      "packet_page": 19,
+      "packet_pages": {
+        "48": 19,
+        "109": 20,
+        "110": 21,
+        "111": 22,
+        "118": 23
+      },
+      "sha256": "dda5da6d08004c85b1535cb23094def4ccf27bdb0428c92043f188dc80df7e58"
+    },
+    "2022": {
+      "filename": "Annual Financial Report_ Year Ended June 30, 2022.pdf",
+      "original_pdf_pages": [
+        47,
+        111,
+        112,
+        113,
+        121
+      ],
+      "printed_reference": "Schedule 10 pp.82–84; Schedule 18 p.92; Exhibit 8 p.24",
+      "packet_page": 24,
+      "packet_pages": {
+        "47": 24,
+        "111": 25,
+        "112": 26,
+        "113": 27,
+        "121": 28
+      },
+      "sha256": "d688c0ba85852c1a29b0286b7657e73d003a7b7b44a6fe2019b62af77b2b3e34"
+    },
+    "2023": {
+      "filename": "Annual Financial Report_ Year Ended June 30, 2023.pdf",
+      "original_pdf_pages": [
+        52,
+        114,
+        115,
+        116,
+        124
+      ],
+      "printed_reference": "Schedule 8 pp.82–84; Schedule 16 p.92; Exhibit 8 p.25",
+      "packet_page": 29,
+      "packet_pages": {
+        "52": 29,
+        "114": 30,
+        "115": 31,
+        "116": 32,
+        "124": 33
+      },
+      "sha256": "b3413df16b3a701b619e73d0fc425df5693ea5639933450b15d931ca20b4a6fb"
+    },
+    "2024": {
+      "filename": "Annual Financial Report_ Year Ended June 30, 2024.pdf",
+      "original_pdf_pages": [
+        45,
+        110,
+        111,
+        112,
+        120
+      ],
+      "printed_reference": "Schedule 9 pp.87–89; Schedule 17 p.97; Exhibit 8 p.25",
+      "packet_page": 34,
+      "packet_pages": {
+        "45": 34,
+        "110": 35,
+        "111": 36,
+        "112": 37,
+        "120": 38
+      },
+      "sha256": "dd2892d97a2e9ab83e37d1c1438874597d06183500057e47e07b649c88359b47"
+    },
+    "2025": {
+      "filename": "_Hillsborough 2025 Audit - Stamped.pdf",
+      "original_pdf_pages": [
+        45,
+        110,
+        111,
+        112,
+        119
+      ],
+      "printed_reference": "Schedule 9 pp.87–89; Schedule 16 p.96; Exhibit 8 p.25",
+      "packet_page": 39,
+      "packet_pages": {
+        "45": 39,
+        "110": 40,
+        "111": 41,
+        "112": 42,
+        "119": 43
+      },
+      "sha256": "218853ec377adf5dd59819163054022341eb0f9ae64e4da94c3b10750dbefd23"
+    }
+  },
+  "corrections": [
+    {
+      "metric": "FY2018 W&S departmental spending",
+      "old": 10082546,
+      "new": 10182546,
+      "effect": 100000,
+      "source": "2018 and 2019 Schedule 12 p.90; wastewater plant is $2,239,288, not $2,139,288."
+    },
+    {
+      "metric": "FY2020 W&S personnel",
+      "old": 2880810,
+      "new": 2780910,
+      "effect": -99900,
+      "source": "2020 Schedule 13 p.87 and 2021 Schedule 11 p.80 comparative; water-distribution personnel is $495,595, not $595,495."
+    }
+  ],
+  "remainingGaps": [
+    "FY2018–FY2019 actual shared-service charges by recipient fund and reciprocal credits",
+    "Historical reserve/purchase/loan funding matches and reciprocal-charge treatment",
+    "FY2025 audit-versus-recommended-plan personnel and one-dollar presentation differences",
+    "Account-level explanation of $197,923.21 residual; the corrected arithmetic does not establish its cause",
+    "FY2021–FY2022 primary tariffs/minimum charges; bill-to-cost and customer-base series"
+  ],
+  "fy2025PersonnelEditionBridge": {
+    "auditTotal": 4022977,
+    "recommendedPlanTotal": 4014542,
+    "auditMinusPlan": 8435,
+    "wastewaterCollectionPersonnel": {
+      "audit": 680479,
+      "plan": 672043,
+      "auditMinusPlan": 8436
+    },
+    "engineeringOrCombinedUtilityAdministrationPersonnel": {
+      "audit": 447172,
+      "plan": 447173,
+      "auditMinusPlan": -1
+    },
+    "wastewaterCollectionOperating": {
+      "audit": 449384,
+      "plan": 457821,
+      "auditMinusPlan": -8437
+    },
+    "wastewaterCollectionPersonnelPlusOperatingDifference": -1,
+    "sources": [
+      "FY2025 audit Schedule 9 printed p.88 / PDF p.111",
+      "FY2027 Recommended Budget and Financial Plan printed pp.111 and 270 / PDF pp.112 and 271"
+    ],
+    "status": "Category difference located; account classification still unverified. Plan training/conference/convention line is $8,437, a reconciliation lead, not proof of reclassification."
+  }
+}

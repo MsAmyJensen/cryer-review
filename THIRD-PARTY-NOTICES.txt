@@ -1,0 +1,19 @@
+The Cryer — third-party notices
+
+pako inflate 1.0.11 is embedded in index.html.
+Copyright (C) 2014-2017 by Vitaly Puzrin and Andrei Tuputcyn.
+License: MIT. Full notice: LICENSES/pako-MIT.txt
+Source: https://raw.githubusercontent.com/nodeca/pako/1.0.11/dist/pako_inflate.min.js
+
+D3 7.9.0 is embedded in the prototype page in cryer-sources-1.js/cryer-sources-2.js.
+Copyright 2010-2023 Mike Bostock.
+License: ISC. Full notice: LICENSES/D3-ISC.txt
+Source notice: https://raw.githubusercontent.com/d3/d3/v7.9.0/LICENSE
+
+Bad Script Regular, Version 2.000, is embedded as a TTF in index.html.
+The CSS family alias is Cryer Bad Script.
+Copyright 2011 The Bad Script Project Authors (https://github.com/alexeiva/badscript).
+License: SIL Open Font License, Version 1.1. Full notice: LICENSES/Bad-Script-OFL.txt
+Source notice: https://raw.githubusercontent.com/google/fonts/main/ofl/badscript/OFL.txt
+
+These notices apply to the identified software/font, not to the Town source documents or Cryer's financial conclusions.
