@@ -17,8 +17,8 @@
       $('review-household-location').value = current.household.location;
       $('review-household-home').disabled = current.household.location === 'outside';
       $('review-household-input-note').textContent = current.household.example
-        ? 'Example values are shown. Enter your taxable value, or open What do I pay? to set your full household inputs.'
-        : 'Uses the taxable value and location shown here. The same-share, historical-trend assumptions are described below.';
+        ? 'This is an example home. Enter your taxable value, or open What do I pay? to include your location, services and water use.'
+        : 'This uses the taxable value and location shown here. The notes below explain how the example divides the Town’s funding gap and extends past cost trends.';
     }
   }
   if (standalone) {

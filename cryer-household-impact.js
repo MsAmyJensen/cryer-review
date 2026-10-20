@@ -27,14 +27,14 @@
       baseline, gapShare, total, annualGap: row.gap, gfCase: s.gfCase, taxCase: s.taxCase};
   }
   function describe(result) {
-    if (result.status === 'outside') return 'No Hillsborough Town property tax applies outside Town limits. This General Fund tax illustration does not add Town property tax to your bill. Utility charges are separate.';
-    if (result.status === 'invalid') return 'Enter a valid, nonnegative taxable home value to see the annual Town-tax illustration. Blank or invalid inputs are not treated as zero.';
-    if (result.status !== 'ready') return 'The household estimate is not available for these inputs or assumptions. Open the household calculator to choose supported inputs.';
-    return `${result.example ? 'Example household' : 'Your household'} · ${money(result.value)} taxable value: the ${result.year} annual Town property-tax illustration is ${money(result.total)} — ${money(result.baseline)} of baseline tax plus ${money(result.gapShare)} toward that year’s funding gap.`;
+    if (result.status === 'outside') return 'A home outside Town limits does not pay Hillsborough Town property tax, so this tax example adds nothing to your bill. Any utility charges and County taxes are separate.';
+    if (result.status === 'invalid') return 'Enter your home’s taxable value as a number of zero or more. Until then, there is no tax estimate; a blank entry does not mean your tax is zero.';
+    if (result.status !== 'ready') return 'A tax estimate is not available for this selection. Open the household calculator to check your entries and choose an available example.';
+    return `${result.example ? 'Example home' : 'Your home'} · ${money(result.value)} taxable value: annual Town property tax would be about ${money(result.total)} for ${result.year} in this scenario. That includes ${money(result.baseline)} in projected tax before paying for the shortfall, plus ${money(result.gapShare)} toward that year’s gap.`;
   }
   function basis(result) {
-    if (result.status !== 'ready') return 'Water, sewer, stormwater and County taxes are separate from this Town property-tax illustration.';
-    return `This uses FY${result.year}’s annual General Fund gap of ${money(result.annualGap)}, before additional savings. It assumes your share of Town property-tax receipts stays fixed and the whole remaining gap is funded through property tax. Spending choices, other funding and changes in the tax base could change the result. This is not an adopted bill. Water, sewer, stormwater and County taxes are separate.`;
+    if (result.status !== 'ready') return 'Water, sewer, stormwater and County taxes are not included in this Town property-tax example.';
+    return `The example assumes property taxes cover the entire ${money(result.annualGap)} funding gap for FY${result.year}, without using more savings. It also assumes your home keeps the same share of the Town’s property-tax collections. Different spending, other income or changes in taxable property could change your cost. This is not an adopted bill. Water, sewer, stormwater and County taxes are separate.`;
   }
   return {compute, describe, basis};
 });
