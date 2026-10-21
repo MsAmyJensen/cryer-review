@@ -9,3 +9,32 @@
 .section-nav a:focus-visible{outline:3px solid #b36b30;outline-offset:4px}
 @media(max-width:600px){.section-nav{grid-template-columns:1fr;gap:10px}.section-nav a{min-height:68px;padding:12px 16px}.section-nav-title{font-size:17px}}
 @media print{.section-nav{display:none}}
+
+/* Keep the main site's section journey available on linked reviewer documents. */
+.cryer-overview-layout{display:grid;grid-template-columns:235px minmax(0,1fr);align-items:start}
+.cryer-overview-content{min-width:0}
+.cryer-overview-content>.wrap{box-sizing:border-box;width:100%;min-width:0}
+.cryer-overview-content>.wrap>header{gap:18px;flex-wrap:wrap}
+.cryer-overview-sidebar{position:sticky;top:0;max-height:100dvh;overflow:auto;background:#f0f3f7;border-right:1px solid #cad3dd;min-height:100dvh}
+.cryer-overview-sidebar .site-nav{padding:18px 17px 26px;font-family:system-ui,sans-serif}
+.cryer-overview-sidebar .site-nav a{display:block;margin:2px 0;padding:11px 12px;border-radius:7px;font-size:15px;font-weight:550;line-height:1.35;color:#20374e;text-decoration:none}
+.cryer-overview-sidebar .site-nav>a{margin-left:10px}
+.cryer-overview-sidebar .site-nav a:hover{background:#dfe7f0}
+.cryer-overview-sidebar .site-nav a[aria-current=page]{background:#173b5c;color:#fff;border-left:4px solid #d59755;font-weight:750}
+.cryer-overview-sidebar .site-nav a[aria-current=location]{background:#dfe7f0;border-left:4px solid #d59755;font-weight:750}
+.cryer-overview-sidebar .site-nav .sub{padding-left:22px}
+.cryer-overview-sidebar .nav-label{margin:30px 12px 12px;padding-top:18px;border-top:1px solid #bdcbd8;font-size:15px;font-weight:900;letter-spacing:.14em;line-height:1.4;color:#725119}
+.cryer-overview-sidebar details{margin-top:22px;border-top:1px solid #cad3dd;padding-top:15px}
+.cryer-overview-sidebar summary{cursor:pointer;padding:12px 0;color:#43566a;font-size:14px}
+.cryer-overview-sidebar details a{font-size:14px}
+.cryer-overview-sidebar :focus-visible{outline:3px solid #98500c;outline-offset:3px}
+#overview-menu-toggle{font:600 16px/1.4 system-ui,sans-serif;padding:12px 16px;border:1px solid #8295a7;border-radius:6px;background:#fff;color:#173b5c;cursor:pointer}
+body.cryer-source-notes-shell{max-width:none;margin:0;padding:0}
+.cryer-source-notes-shell .cryer-overview-content{box-sizing:border-box;width:100%;max-width:964px;margin:auto;padding:32px}
+@media(max-width:1100px){
+ .cryer-overview-layout{grid-template-columns:minmax(0,1fr)}
+ .cryer-overview-sidebar{min-height:0;max-height:75dvh;border-right:0;border-bottom:1px solid #cad3dd;z-index:10;padding:10px 16px}
+ .cryer-overview-sidebar .site-nav{padding:8px 0 16px}
+ .cryer-overview-sidebar .site-nav a{font-size:16px;min-height:44px;box-sizing:border-box}
+}
+@media print{.cryer-overview-sidebar{display:none}.cryer-overview-layout{display:block}}

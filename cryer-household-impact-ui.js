@@ -10,7 +10,8 @@
     const current = standalone ? state : window.cryerPreviewState.capture();
     if (!current) return;
     const result = api.compute(data, current.household, current.selection);
-    $('review-household-impact').textContent = api.describe(result);
+    const impact = $('review-household-impact');
+    if (impact) impact.textContent = api.describe(result);
     $('review-household-basis').textContent = api.basis(result);
     if (standalone) {
       if (document.activeElement !== $('review-household-home')) $('review-household-home').value = current.household.home;
