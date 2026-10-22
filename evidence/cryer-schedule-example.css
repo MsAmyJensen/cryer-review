@@ -1,0 +1,14 @@
+.cryer-master .master-fire-example{margin:16px 0 20px;padding:0 18px;border:1px solid #b6c7ce;border-radius:8px;background:#f3f7f8;color:#183b54}
+.cryer-master .master-fire-example summary{padding:14px 0;font-size:16px;font-weight:700;cursor:pointer}
+.cryer-master .master-fire-example summary:focus-visible{outline:3px solid #bc8723;outline-offset:3px}
+.cryer-master .master-fire-example>p{font-size:14px;margin:0 0 14px;max-width:95ch}
+.cryer-master .master-fire-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0}
+.cryer-master .master-fire-steps>div{padding:16px;background:#fff;border:1px solid #d7e0e3;border-radius:6px}
+.cryer-master .master-fire-steps h3{font:700 15px system-ui;margin:0 0 10px;color:#87621d}
+.cryer-master .master-fire-steps strong{display:block;font-size:17px;line-height:1.4;margin-bottom:10px}
+.cryer-master .master-fire-steps p{font-size:14px;margin:0;line-height:1.5}
+.cryer-master .master-fire-example .master-fire-note{font-size:13px;color:#587080}
+.cryer-master .master-fire-example a{color:#183b54;text-underline-offset:3px}
+.master-contextual .master-fire-example,.master-balances-view .master-fire-example{display:none}
+@media(max-width:700px){.cryer-master .master-fire-steps{grid-template-columns:1fr;gap:10px}.cryer-master .master-fire-example{padding:0 14px}}
+@media print{.cryer-master .master-fire-example{display:none}}

@@ -1,0 +1,5 @@
+Cohort,Assessment IDs,Appraised real property value,Share of combined appraisal,Definition
+Town,4472,2656395206,40.3234701851,JURISDICTION=HILLSBOROUGH; District=G3
+County + Hillsborough address,7629,3931319576,59.6765298149,JURISDICTION=COUNTY; normalized situs City=HILLSBOROUGH
+Combined,12101,6587714782,100,Disjoint union of the two groups above
+Hillsborough situs City only,11839,6526457929,,Includes 4210 Town and 7629 County records; excludes 262 Town records with blank City
