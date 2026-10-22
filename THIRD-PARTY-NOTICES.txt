@@ -1,4 +1,4 @@
-The Cryer — third-party notices
+Town Ledger — third-party notices
 
 pako inflate 1.0.11 is embedded in index.html.
 Copyright (C) 2014-2017 by Vitaly Puzrin and Andrei Tuputcyn.
@@ -16,4 +16,4 @@ Copyright 2011 The Bad Script Project Authors (https://github.com/alexeiva/badsc
 License: SIL Open Font License, Version 1.1. Full notice: LICENSES/Bad-Script-OFL.txt
 Source notice: https://raw.githubusercontent.com/google/fonts/main/ofl/badscript/OFL.txt
 
-These notices apply to the identified software/font, not to the Town source documents or Cryer's financial conclusions.
+These notices apply to the identified software/font, not to the Town source documents or Town Ledger's financial conclusions.
