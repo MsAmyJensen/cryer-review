@@ -114,7 +114,7 @@
   }
   else if(setSrc&&!pendingView&&chapter!=='welcome')frame.contentWindow.postMessage({channel:'town-ledger-local-preview',type:'household',household:household()},'*');
   if(budgetView(view)){const section=participationAliases[budgetReturn().slice(1)];if(section)mark(section==='engage'?'priorities':'impact');sendBudgetBackContext();}
-  document.title='Town Ledger · '+$('detail-label').textContent;return true;
+  document.title=chapter==='welcome'?'Town Ledger · Inform. Empower. Impact.':'Town Ledger · '+$('detail-label').textContent;return true;
  }
  function route(){
   routeFromHash=handledHash;handledHash=location.hash;
