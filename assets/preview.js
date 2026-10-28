@@ -161,4 +161,5 @@
  window.addEventListener('resize',()=>{if(!$('brief-view').hidden)positionGraph();});
  graph?.addEventListener('scroll',()=>{$('graph-scroll-hint').textContent=graph.scrollLeft>10?'Swipe or scroll left for the earlier years.':'Swipe or scroll right to see the FY2039 gap.';},{passive:true});
  restoreHousehold();saveHousehold();renderBill();route();
+ document.documentElement.classList.remove('route-starting');
 })();
