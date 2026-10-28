@@ -106,11 +106,11 @@
   $('detail-label').textContent=chapter?chapters[chapter][0]:D['route-data'][route]?.title||'Sources & supporting detail';
   $('open-detail').href=new URL(view,evidence).href;mark(['priorities','cryer-summary'].includes(route)?'priorities':chapter);closeMenu();window.scrollTo(0,0);
   if(setSrc&&(force||view!==lastView||view!==readyView||!frameIsAt(view)||!$('detail-error').hidden)){
-   clearLoadState();readyView=null;pendingView=view;lastView=view;frame.setAttribute('aria-busy','true');loadTimer=setTimeout(loadFailed,12000);
+   clearLoadState();readyView=null;pendingView=view;lastView=view;frame.removeAttribute('data-view-ready');frame.setAttribute('aria-busy','true');loadTimer=setTimeout(loadFailed,12000);
    // The parent route already records this visit. Replacing the child location
    // avoids an extra joint-history entry for the same reader action.
    const href=new URL(view,evidence).href;
-   try{if(frame.contentWindow.location.origin===location.origin)frame.contentWindow.location.replace(href);else frame.src=href;}catch{frame.src=href;}
+   try{if(frameIsAt(view))frame.contentWindow.location.reload();else if(frame.contentWindow.location.origin===location.origin)frame.contentWindow.location.replace(href);else frame.src=href;}catch{frame.src=href;}
   }
   else if(setSrc&&!pendingView&&chapter!=='welcome')frame.contentWindow.postMessage({channel:'town-ledger-local-preview',type:'household',household:household()},'*');
   if(budgetView(view)){const section=participationAliases[budgetReturn().slice(1)];if(section)mark(section==='engage'?'priorities':'impact');sendBudgetBackContext();}
@@ -140,7 +140,8 @@
   if(message.type==='overview'){location.hash='brief';return;}
   if(pendingView){
    if(!['ready','route'].includes(message.type)||!allowed(message.view)||!sameDocumentAndAnchor(message.view,pendingView))return;
-   readyView=lastView;pendingView=null;clearLoadState();
+   // Reveal only the requested view after its shared navigation bridge is ready.
+   readyView=lastView;pendingView=null;clearLoadState();frame.setAttribute('data-view-ready','');
   }
   if(message.type==='back'&&budgetView(lastView)&&budgetView(message.view)&&sameDocumentAndAnchor(message.view,lastView)){location.hash=budgetReturn();return;}
   if(message.type==='navigate'&&allowed(message.view)){location.hash='view='+encodeURIComponent(message.view);}

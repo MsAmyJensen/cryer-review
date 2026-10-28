@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow"><meta name="application-name" content="Town Ledger">
 <title>Town Ledger · The Big Picture</title>
-<style>html.route-starting #brief-view{display:none}</style>
+<style>html.route-starting #brief-view{display:none}#detail-frame:not([data-view-ready]){visibility:hidden}</style>
 <script>
 // Wait for the initial route before showing the static overview fallback.
 document.documentElement.classList.add('route-starting');
@@ -12,7 +12,7 @@ window.addEventListener('load',function(){document.documentElement.classList.rem
 </script>
 <link rel="stylesheet" href="assets/preview.css">
 <link rel="stylesheet" href="assets/search.css">
-<script defer src="assets/preview-data.js"></script><script defer src="assets/current-bill.js"></script><script defer src="assets/household-impact.js"></script><script defer src="assets/preview.js"></script><script defer src="assets/search-index.js"></script><script defer src="assets/search.js"></script>
+<script defer src="assets/preview-data.js"></script><script defer src="assets/current-bill.js"></script><script defer src="assets/household-impact.js"></script><script defer src="assets/preview.js?startup=2"></script><script defer src="assets/search-index.js"></script><script defer src="assets/search.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
