@@ -53,7 +53,7 @@
     try { sessionStorage.removeItem(key); } catch (_) {}
   }
   window.cryerPreviewState = {read, save, capture, defaults: () => ({
-    household: {location: 'inside', services: 'both', home: '850000', gallons: '4000', example: true},
+    household: {location: 'inside', services: 'both', home: '400000', gallons: '4000', example: true},
     selection: {...defaultSelection}
   })};
   document.addEventListener('click', event => {
