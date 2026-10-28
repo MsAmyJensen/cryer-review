@@ -2,10 +2,10 @@
  'use strict';
  const $=id=>document.getElementById(id),D=window.townLedgerPreviewData;
  const gf='Cryer-Future-Outlook-General-Fund-Source-Links-2026-10-16.html',ws='Cryer-Future-Outlook-Utilities-Source-Links-2026-10-16.html',loan='Cryer-General-Fund-Loan-Projects-Source-Links-2026-10-16.html';
- const chapters={welcome:['Welcome','index.html#welcome'],pay:['What do I pay?','index.html#relationships'],future:['Future Outlook',gf],money:['Follow the money','index.html#gf-revenue'],who:['Who pays?','who-pays/Who_Pays_Preview_v7_2026-10-19.html'],funding:['Where does funding come from?','index.html#revenue'],services:['What does it pay for?','index.html#services'],projects:['Projects, capital & debt','index.html#projects']};
+ const chapters={welcome:['Welcome','welcome.html'],pay:['What do I pay?','index.html#relationships'],future:['Future Outlook',gf],money:['Follow the money','index.html#gf-revenue'],who:['Who pays?','who-pays/Who_Pays_Preview_v7_2026-10-19.html'],funding:['Where does funding come from?','index.html#revenue'],services:['What does it pay for?','index.html#services'],projects:['Projects, capital & debt','index.html#projects']};
  const secondary={priorities:'index.html#priorities','budget-process':'index.html#reference-budget-process',records:'index.html#records',reference:'index.html#reference',summary:'index.html#cryer-summary',changes:'index.html#what-changed','shared-costs':'index.html#flows','who-sources':'who-pays/References_v7_2026-10-19.html','loan-projects':loan,'loan-rail':loan+'#loan-a','loan-fire':loan+'#loan-b','loan-north':loan+'#loan-c','loan-ladder':loan+'#loan-d','loan-south':loan+'#loan-e'};
  const participationAliases={engage:'engage',priorities:'engage',participate:'engage','detail=priorities':'engage',impact:'impact','cryer-summary':'impact','what-changed':'impact','detail=summary':'impact','detail=changes':'impact'};
- const files=new Set(['index.html',gf,ws,loan,'Cryer-Water-Sewer-Loan-Projects-Source-Links-2026-10-16.html','source-notes.html','who-pays/Who_Pays_Preview_v7_2026-10-19.html','who-pays/References_v7_2026-10-19.html']);
+ const files=new Set(['index.html','welcome.html',gf,ws,loan,'Cryer-Water-Sewer-Loan-Projects-Source-Links-2026-10-16.html','source-notes.html','who-pays/Who_Pays_Preview_v7_2026-10-19.html','who-pays/References_v7_2026-10-19.html']);
  const evidence=new URL('evidence/',location.href),frame=$('detail-frame');
  let lastView='',readyView=null,pendingView=null,loadTimer=null,handledHash=location.hash,routeFromHash=null,example=true;
  const selection={taxCase:'constant_receipts_share',gfCase:'historical_seven_year_mapped_utility',utilityCase:'historical_rate_growth',year:2039};
@@ -67,7 +67,7 @@
  function frameIsAt(view){try{return frame.contentWindow.location.href===new URL(view,evidence).href;}catch{return false;}}
  function classify(view){
   const u=new URL(view,evidence),file=decodeURIComponent(u.pathname.slice(evidence.pathname.length)),route=decodeURIComponent(u.hash.slice(1));
-  if(file==='index.html'&&route==='welcome')return 'welcome';
+  if(file==='welcome.html'||file==='index.html'&&route==='welcome')return 'welcome';
   if(file.includes('Loan-Projects'))return 'projects';
   if(file.includes('Future-Outlook'))return 'future';
   if(file.startsWith('who-pays/'))return 'who';
@@ -81,11 +81,14 @@
  }
  function mark(chapter){if(chapter==='pay'||chapter==='future')chapter='brief';document.querySelectorAll('[data-chapter]').forEach(a=>{if(a.dataset.chapter===chapter)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});}
  function clearLoadState(){clearTimeout(loadTimer);loadTimer=null;$('detail-error').hidden=true;frame.removeAttribute('aria-busy');}
- function loadFailed(){
+ function showLoadNotice(failed){
   if(!pendingView||$('detail-view').hidden)return;
-  $('detail-error-message').textContent=['127.0.0.1','localhost'].includes(location.hostname)?'The local preview may have stopped. Open “Start Town Ledger.command” in the preview folder, then choose Try again.':'Please try opening the page again. You can also return to The Big Picture.';
-  $('detail-error').hidden=false;frame.removeAttribute('aria-busy');
+  $('detail-error-title').textContent=failed?'This page did not load.':'This page is taking longer than expected.';
+  $('detail-error-message').textContent=failed?(['127.0.0.1','localhost'].includes(location.hostname)?'The local preview may have stopped. Open “Start Town Ledger.command” in the preview folder, then choose Try again.':'Please try opening the page again. You can also return to The Big Picture.'):'You can keep waiting, try again, or return to The Big Picture.';
+  $('detail-error').hidden=false;
+  if(failed){clearTimeout(loadTimer);loadTimer=null;frame.removeAttribute('aria-busy');}
  }
+ function loadFailed(){showLoadNotice(true);}
  $('detail-retry').addEventListener('click',()=>displayDetail(lastView,true,true));
  frame.addEventListener('error',loadFailed);
  function showParticipation(section){
@@ -97,6 +100,7 @@
   const target=new URL(view,evidence);
   const participation=target.pathname===new URL('index.html',evidence).pathname?participationAliases[target.hash.slice(1)]:null;
   if(participation){history.replaceState(null,'','#'+participation);handledHash=location.hash;return showParticipation(participation);}
+  if(setSrc&&target.pathname===new URL('index.html',evidence).pathname&&target.hash==='#welcome')view='welcome.html';
   if(target.pathname===new URL('index.html',evidence).pathname&&['#gf-outlook','#gf-classic-overview'].includes(target.hash))view=gf;
   if(!allowed(view))return false;
   if(budgetView(view))rememberBudgetReturn();
@@ -106,7 +110,7 @@
   $('detail-label').textContent=chapter?chapters[chapter][0]:D['route-data'][route]?.title||'Sources & supporting detail';
   $('open-detail').href=new URL(view,evidence).href;mark(['priorities','cryer-summary'].includes(route)?'priorities':chapter);closeMenu();window.scrollTo(0,0);
   if(setSrc&&(force||view!==lastView||view!==readyView||!frameIsAt(view)||!$('detail-error').hidden)){
-   clearLoadState();readyView=null;pendingView=view;lastView=view;frame.removeAttribute('data-view-ready');frame.setAttribute('aria-busy','true');loadTimer=setTimeout(loadFailed,12000);
+   clearLoadState();readyView=null;pendingView=view;lastView=view;frame.removeAttribute('data-view-ready');frame.setAttribute('aria-busy','true');loadTimer=setTimeout(()=>showLoadNotice(false),12000);
    // The parent route already records this visit. Replacing the child location
    // avoids an extra joint-history entry for the same reader action.
    const href=new URL(view,evidence).href;
