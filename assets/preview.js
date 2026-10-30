@@ -1,6 +1,11 @@
 (() => {
  'use strict';
  const $=id=>document.getElementById(id),D=window.townLedgerPreviewData;
+ // Keep the already-loaded calculators tied to this document's lifetime.
+ const currentBill=window.townLedgerBill,computeImpact=window.cryerHouseholdImpact.compute;
+ let pageActive=true;
+ window.addEventListener('pagehide',()=>{pageActive=false;});
+ window.addEventListener('pageshow',()=>{pageActive=true;});
  const gf='Cryer-Future-Outlook-General-Fund-Source-Links-2026-10-16.html',ws='Cryer-Future-Outlook-Utilities-Source-Links-2026-10-16.html',loan='Cryer-General-Fund-Loan-Projects-Source-Links-2026-10-16.html';
  const chapters={welcome:['Welcome','welcome.html'],pay:['What do I pay?','index.html#relationships'],future:['Future Outlook',gf],money:['Follow the money','index.html#gf-revenue'],who:['Who pays?','who-pays/Who_Pays_Preview_v7_2026-10-19.html'],funding:['Where does funding come from?','index.html#revenue'],services:['What does it pay for?','index.html#services'],projects:['Projects, capital & debt','index.html#projects']};
  const secondary={priorities:'index.html#priorities','budget-process':'index.html#reference-budget-process',records:'index.html#records',reference:'index.html#reference',summary:'index.html#cryer-summary',changes:'index.html#what-changed','shared-costs':'index.html#flows','who-sources':'who-pays/References_v7_2026-10-19.html','loan-projects':loan,'loan-rail':loan+'#loan-a','loan-fire':loan+'#loan-b','loan-north':loan+'#loan-c','loan-ladder':loan+'#loan-d','loan-south':loan+'#loan-e'};
@@ -25,7 +30,8 @@
  }
  function saveHousehold(){try{sessionStorage.setItem(householdKey,JSON.stringify({home:$('home-value').value,location:$('home-location').value,example}));}catch{/* The calculator still works when browser storage is unavailable. */}}
  function renderBill(){
-  const h=household(),now=window.townLedgerBill(h,D['quick-data'].rates),future=window.cryerHouseholdImpact.compute(D['household-utility-data'],h,selection);
+  if(!pageActive)return;
+  const h=household(),now=currentBill(h,D['quick-data'].rates),future=computeImpact(D['household-utility-data'],h,selection);
   $('home-note').textContent=example?'Example value: $400,000. Replace it with your taxable home value.':'Uses your entry. Nothing is sent or published.';
   $('home-value').disabled=h.location==='outside';
   if(future.status==='outside'){
@@ -137,7 +143,7 @@
  window.addEventListener('hashchange',route);
  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.hash===location.hash){e.preventDefault();route();}});
  window.addEventListener('message',event=>{
-  if(event.source!==frame.contentWindow||event.data?.channel!=='town-ledger-local-preview')return;
+  if(!pageActive||event.source!==frame.contentWindow||event.data?.channel!=='town-ledger-local-preview')return;
   if($('detail-view').hidden||location.hash!==handledHash)return;
   const message=event.data;
   if(message.type==='participation'&&['engage','impact'].includes(message.section)){location.hash=message.section;return;}
