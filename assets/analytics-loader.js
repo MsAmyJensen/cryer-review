@@ -1,12 +1,14 @@
-/* One top-level installation, never in hosted forms or standalone source pages.
+/* One installation in the main document. Never instrument evidence frames or forms.
  * No input values, search text, identity, custom tags or custom events are read.
- * Text/image masking is present in HTML before this loader can run.
+ * Clarity text/image masking is present in HTML before this loader can run.
  */
 (() => {
   'use strict';
   const config = window.townLedgerAnalyticsConfig;
-  if (!config || window !== window.top) return;
-  let attempted = false, blocked = false, loaded = false, tag = null;
+  if (!config || window !== window.top || !['/', '/index.html'].includes(location.pathname)) return;
+  const counts = {attempted: false, loaded: false, tag: null};
+  const recordings = {attempted: false, loaded: false, tag: null};
+  let blocked = false, active = true;
   function safeLocation() {
     // URLs/referrers can contain personal data and are not covered by DOM masking.
     if (location.search || document.referrer.includes('?')) return false;
@@ -28,53 +30,75 @@
     }
   }
   function blockTransport() {
-    // Stop can flush a final beacon; consent denial can restart cookieless capture.
-    // Apply browser-enforced restrictions BEFORE either call, then unload the SDK.
-    // This policy lasts only until the immediate reload. It does not affect forms
-    // opened separately and does not touch any account or server configuration.
+    // Stop can flush a final beacon; Clarity consent denial can restart capture.
+    // Block transport BEFORE either call. A reload unloads both SDKs and restores
+    // only the permissions still saved. This policy lasts for this document only.
     const policy = document.createElement('meta');
     policy.httpEquiv = 'Content-Security-Policy';
     policy.content = "connect-src 'none'; script-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src 'self'; worker-src 'none'; object-src 'none'";
     document.head.appendChild(policy);
   }
-  function stop() {
-    blocked = attempted;
-    const needsReload = attempted;
-    if (needsReload) {
+  function permissions(value) {
+    const privacyOff = navigator.globalPrivacyControl === true;
+    return {counts: !privacyOff && value?.counts === true, recordings: !privacyOff && value?.recordings === true};
+  }
+  function stopDisallowed(value) {
+    const next = permissions(value);
+    const needsReload = blocked || (counts.attempted && !next.counts) || (recordings.attempted && !next.recordings);
+    if (needsReload && !blocked) {
+      blocked = true;
       blockTransport();
-      tag?.remove();
-      if (typeof window.clarity === 'function') {
+      counts.tag?.remove();
+      recordings.tag?.remove();
+      if (recordings.attempted && typeof window.clarity === 'function') {
         try { window.clarity('consentv2', {analytics_Storage: 'denied', ad_Storage: 'denied'}); } catch { /* reload still unloads the SDK */ }
         try { window.clarity('stop'); } catch { /* reload still unloads the SDK */ }
         if (window.clarity.q) window.clarity.q.length = 0;
       }
+      counts.loaded = recordings.loaded = false;
     }
-    clearCookies();
-    loaded = false;
+    if (!next.recordings || needsReload) clearCookies();
     return needsReload;
   }
-  function start() {
-    if (attempted || blocked || !config.enabled || config.preview || !config.allowedOrigins.includes(location.origin) || !safeLocation()) return false;
-    if (navigator.globalPrivacyControl === true) return false;
-    if (document.documentElement.getAttribute('data-clarity-mask') !== 'True') return false;
-    attempted = true;
-    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
-    // Queue consent before inserting the asynchronous tag. No advertising grant.
-    window.clarity('consentv2', {analytics_Storage: 'granted', ad_Storage: 'denied'});
-    tag = document.createElement('script');
-    tag.async = true;
-    tag.referrerPolicy = 'no-referrer';
-    tag.src = 'https://www.clarity.ms/tag/' + config.projectId;
-    tag.id = 'town-ledger-clarity-tag';
-    tag.addEventListener('load', () => { if (!blocked) loaded = true; });
-    tag.addEventListener('error', () => { loaded = false; });
+  function attach(state, tag) {
+    state.attempted = true;
+    state.tag = tag;
+    tag.addEventListener('load', () => { if (!blocked) state.loaded = true; });
+    tag.addEventListener('error', () => { state.loaded = false; });
     document.head.appendChild(tag);
-    return true;
   }
-  // Existing navigation generates only public route hashes; household values
-  // stay in tab storage and Search never writes its query to a URL. Do not
-  // reinitialize the SDK, add custom route tags, or reload on chapter changes.
-  window.townLedgerAnalytics = Object.freeze({start, stop,
-    snapshot: () => ({enabled: config.enabled, preview: config.preview, attempted, loaded, blocked})
+  function apply(value) {
+    const next = permissions(value);
+    if (stopDisallowed(next)) return true;
+    if (!active || blocked || !config.enabled || config.preview || !config.allowedOrigins.includes(location.origin) || !safeLocation()) return false;
+    if (next.counts && !counts.attempted && config.cloudflare?.enabled === true && typeof config.cloudflare.token === 'string' && config.cloudflare.token.trim()) {
+      const tag = document.createElement('script');
+      tag.type = 'module';
+      tag.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      tag.id = 'town-ledger-cloudflare-tag';
+      // One document load, not one measurement per hash change or embedded page.
+      tag.setAttribute('data-cf-beacon', JSON.stringify({token: config.cloudflare.token, spa: false}));
+      attach(counts, tag);
+    }
+    if (next.recordings && !recordings.attempted && document.documentElement.getAttribute('data-clarity-mask') === 'True') {
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      // Queue consent before inserting the asynchronous tag. No advertising grant.
+      window.clarity('consentv2', {analytics_Storage: 'granted', ad_Storage: 'denied'});
+      const tag = document.createElement('script');
+      tag.async = true;
+      tag.referrerPolicy = 'no-referrer';
+      tag.src = 'https://www.clarity.ms/tag/' + config.projectId;
+      tag.id = 'town-ledger-clarity-tag';
+      attach(recordings, tag);
+    }
+    return false;
+  }
+  // Do not reinitialize either SDK or add custom events on chapter changes.
+  window.addEventListener('pagehide', () => { active = false; });
+  window.addEventListener('pageshow', () => { active = true; });
+  window.townLedgerAnalytics = Object.freeze({apply, stopDisallowed,
+    snapshot: () => ({enabled: config.enabled, preview: config.preview, blocked,
+      counts: {attempted: counts.attempted, loaded: counts.loaded},
+      recordings: {attempted: recordings.attempted, loaded: recordings.loaded}})
   });
 })();
