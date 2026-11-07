@@ -1,0 +1,41 @@
+/* Content hierarchy and plain-language basis notes. No financial behavior changes. */
+.content-breadcrumb{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px;margin:16px 0 24px;font:500 13px/1.6 system-ui,sans-serif;color:#52646d}
+.content-breadcrumb a{color:#214d40;text-decoration:underline;text-underline-offset:3px;min-height:32px;padding:5px 0}
+.content-breadcrumb [aria-current]{font-weight:650;color:#183e58}
+.content-breadcrumb a:focus-visible,.content-primary-link:focus-visible,.funding-basis-guide summary:focus-visible,.funding-basis-guide a:focus-visible,.hh-growth-comparison-note a:focus-visible{outline:3px solid #b36b30;outline-offset:3px}
+.project-decisions-next{display:flex;align-items:center;justify-content:space-between;gap:28px;border-top:1px solid #d8dfdc}
+.project-decisions-next>div{max-width:660px}
+.project-decisions-next h2{font-size:28px;line-height:1.3;margin-bottom:12px}
+.project-decisions-next p:not(.eyebrow){font-size:14px;line-height:1.65;color:#52646d}
+.project-decisions-next>.button{flex-shrink:0}
+.outlook-detail .outlook-data-next{padding:24px;background:#edf3ef;border:1px solid #c4d3c1;border-radius:8px;margin:0 0 18px}
+.outlook-detail .outlook-data-next h2{font-size:26px;line-height:1.3;margin:0 0 14px}
+.outlook-detail .outlook-data-next p{font-size:15px;line-height:1.65;margin:0 0 18px;max-width:850px}
+.content-primary-link{display:inline-block;min-height:44px;box-sizing:border-box;padding:11px 15px;border-radius:4px;background:#214d40;color:#fff!important;font:650 14px/1.5 system-ui,sans-serif;text-decoration:none;overflow-wrap:anywhere}
+.content-primary-link:hover{background:#173b31}
+#longer-outlook-page .content-breadcrumb{margin-top:0}
+#longer-outlook-page .hh-growth-comparison-note p{margin:0 0 10px}
+#longer-outlook-page .hh-growth-comparison-note p:last-child{margin-bottom:0}
+#longer-outlook-page .hh-growth-comparison-note a{color:#214d40;text-underline-offset:3px}
+#longer-outlook-page .basis-source{font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+#longer-outlook-page .funding-basis-guide{margin:24px 0 30px;padding:22px 24px;border:1px solid #cad7df;border-radius:6px;background:#f5f8f7;color:#263f48;overflow-wrap:anywhere}
+#longer-outlook-page .funding-basis-guide>h3{font-size:23px;line-height:1.35;margin:0 0 14px}
+#longer-outlook-page .funding-basis-guide p,#longer-outlook-page .funding-basis-guide dd{font-size:14px;line-height:1.65}
+#longer-outlook-page .funding-basis-guide>p{margin:0 0 20px}
+#longer-outlook-page .funding-key-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;margin:0 0 20px}
+#longer-outlook-page .funding-basis-guide dt{font-size:15px;font-weight:700;color:#183e58;margin-bottom:5px}
+#longer-outlook-page .funding-basis-guide dd{margin:0}
+#longer-outlook-page .funding-basis-guide details{border-top:1px solid #cad7df;padding:12px 0;margin:0;background:none;box-shadow:none;border-radius:0}
+#longer-outlook-page .funding-basis-guide details:last-child{padding-bottom:0}
+#longer-outlook-page .funding-basis-guide summary{font-size:15px;font-weight:650;line-height:1.5;color:#214d40;cursor:pointer;min-height:44px;box-sizing:border-box;padding:10px 0}
+#longer-outlook-page .funding-worked-example>div,#longer-outlook-page .funding-terms-guide>dl{padding-top:14px}
+#longer-outlook-page .funding-steps{padding-left:22px;margin:16px 0}
+#longer-outlook-page .funding-steps>li{padding:4px 0 12px 8px}
+#longer-outlook-page .funding-steps h4{font-size:16px;line-height:1.4;margin:0 0 10px;color:#183e58}
+#longer-outlook-page .funding-steps p{margin:0 0 10px}
+#longer-outlook-page .basis-gap{padding:12px;border-left:3px solid #214d40;background:#e6eee8}
+#longer-outlook-page .funding-terms-guide dl{margin:0}
+#longer-outlook-page .funding-terms-guide dl>div{margin:0 0 16px}
+#longer-outlook-page .basis-example-label{color:#52646d}
+@media(max-width:700px){.project-decisions-next{display:block}.project-decisions-next>.button{margin-top:16px}.project-decisions-next h2{font-size:25px}.outlook-detail .outlook-data-next{padding:18px}.outlook-detail .outlook-data-next h2{font-size:23px}#longer-outlook-page .funding-basis-guide{padding:18px 14px}#longer-outlook-page .funding-key-terms{grid-template-columns:1fr}.content-breadcrumb{gap:4px 8px;font-size:12px}}
+@media print{.content-breadcrumb{display:none}#longer-outlook-page .funding-basis-guide{background:#fff}.project-decisions-next,.outlook-data-next{break-inside:avoid}}

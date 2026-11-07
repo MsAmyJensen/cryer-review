@@ -1,0 +1,13 @@
+/* Dated evidence accompanies, but does not recalculate, the May capital schedule. */
+.pr-intro{border-left:4px solid #00899a;background:#edf5f5;padding:18px 22px;margin:20px 0 24px;border-radius:0 10px 10px 0;color:#193e50}
+.pr-intro p{margin:0 0 12px;max-width:84ch}.pr-intro p:last-child{margin-bottom:0}
+.pr-intro details{margin-top:12px}.pr-intro summary{cursor:pointer;font-weight:700;padding:8px 0}.pr-intro details[open] summary{margin-bottom:8px}
+.pr-intro dl{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;margin:12px 0}.pr-intro dt{font-weight:700}.pr-intro dd{margin:3px 0 0}
+.pr-date{font-size:.8rem;letter-spacing:.02em;color:#526b74;margin:18px 0 8px}
+.cp-body .pr-facts{display:block;margin:0}.cp-body .pr-facts>div{display:grid;grid-template-columns:190px minmax(0,1fr);gap:12px;padding:13px 0;border-bottom:1px solid #dce6e8}.cp-body .pr-facts dt{font-weight:700;color:#193e50}.cp-body .pr-facts dd{margin:0;line-height:1.6;overflow-wrap:anywhere}
+.pr-choices{background:#edf5f5;border:1px solid #cbdfe2;border-radius:8px;padding:18px 20px;margin:20px 0}.pr-choices h4{font-size:1.05rem;margin:0 0 8px;color:#193e50}.pr-choices p{margin:0 0 12px;line-height:1.6}.pr-choices p:last-child{margin-bottom:0}.pr-ask{border-top:1px solid #cbdfe2;padding-top:12px}
+.pr-conflict{border-left:3px solid #ad641f;padding:4px 0 4px 14px;line-height:1.6}.pr-sources{font-size:.85rem;line-height:1.8;overflow-wrap:anywhere}.pr-sources a{color:#006579;text-decoration:underline;text-underline-offset:3px}
+.cp-project-row .cp-status{white-space:normal;line-height:1.5;max-width:100%}.cp-project-row .cp-row-meta{min-width:0;flex-wrap:wrap}.cp-project-row .cp-amount{min-width:0}.pr-schedule-note{font-size:.85rem;color:#526b74}
+.pr-intro summary:focus-visible,.pr-evidence a:focus-visible{outline:3px solid #ad641f;outline-offset:4px}
+@media(max-width:640px){.pr-intro{padding:15px}.pr-intro dl{grid-template-columns:1fr}.cp-body .pr-facts>div{grid-template-columns:1fr;gap:4px}.pr-choices{padding:15px}.cp-project-row .cp-status{font-size:.76rem}.pr-sources a{display:inline-block;padding:3px 0}}
+.pr-schedule-evidence{border-left:3px solid #00899a;background:#edf5f5;padding:12px 16px;margin:12px 0;max-width:85ch;white-space:normal}.pr-schedule-evidence p{margin:0 0 10px}.pr-schedule-evidence a{color:#006579;text-decoration:underline}

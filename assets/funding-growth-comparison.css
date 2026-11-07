@@ -1,0 +1,30 @@
+/* Private-review comparison. Financial data and chart geometry are unchanged. */
+#longer-outlook-page .hh-growth-comparison-note{max-width:none;padding:14px 16px;margin:14px 0 22px;border-left:3px solid #607b8d;background:#f1f5f7;color:#405665;font-size:14px;line-height:1.6}
+#longer-outlook-page .hh-growth-comparison-note strong{display:block;color:#183e58;margin-bottom:3px}
+#longer-outlook-page .hh-growth-comparison{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,27rem),1fr));gap:20px;align-items:stretch;min-width:0}
+#longer-outlook-page .hh-growth-comparison>.hh-history-panel{min-width:0;margin:0;padding:20px;border:1px solid #cad7df;border-top:4px solid #183e58;border-radius:6px;background:#fffdfb}
+#longer-outlook-page .hh-growth-comparison>.hh-history-panel:last-child{border-top-style:dashed}
+#longer-outlook-page .hh-growth-comparison h4.v49-lead{font-size:22px!important;line-height:1.35!important;font-weight:650;margin:10px 0 18px!important;min-height:2.7em}
+#longer-outlook-page .hh-growth-comparison .hh-timeline-kicker{line-height:1.5}
+#longer-outlook-page .hh-growth-comparison .v49-evidence-scroll{margin:0 0 18px}
+#longer-outlook-page .hh-growth-comparison .v49-evidence{font-size:13px}
+#longer-outlook-page .hh-growth-comparison .v49-evidence caption{font-size:13px;padding:0 0 9px}
+#longer-outlook-page .hh-growth-comparison .v49-evidence th,#longer-outlook-page .hh-growth-comparison .v49-evidence td{padding:10px 7px}
+#longer-outlook-page .hh-growth-comparison .v49-evidence th:first-child{min-width:74px;width:23%}
+#longer-outlook-page .hh-growth-comparison .v49-evidence thead th{font-size:12px;white-space:normal}
+#longer-outlook-page .hh-growth-comparison .hh-growth-revenue .hh-growth-total,#longer-outlook-page .hh-growth-comparison .hh-growth-revenue dd{color:#00677c}
+#longer-outlook-page .hh-growth-comparison .hh-growth-spending .hh-growth-total,#longer-outlook-page .hh-growth-comparison .hh-growth-spending dd{color:#92450f}
+#longer-outlook-page .hh-growth-total{font-variant-numeric:tabular-nums}
+#longer-outlook-page .hh-annualized-rates{padding:14px 12px;margin:0 0 18px;background:#edf3f6;border:1px solid #d5e1e8;border-radius:4px}
+#longer-outlook-page .hh-annualized-label{margin:0 0 10px;font-size:13px;font-weight:650;line-height:1.5;color:#183e58}
+#longer-outlook-page .hh-annualized-rates dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0}
+#longer-outlook-page .hh-annualized-rates dt{font-size:13px;color:#405665}
+#longer-outlook-page .hh-annualized-rates dd{font-size:26px;font-weight:700;line-height:1.35;margin:3px 0 0;font-variant-numeric:tabular-nums}
+#longer-outlook-page .hh-annualized-rates dd span{font-size:12px;font-weight:400;white-space:nowrap}
+#longer-outlook-page .hh-annualized-note{margin:10px 0 0;font-size:12px;color:#405665;line-height:1.5}
+#longer-outlook-page .hh-growth-comparison .hh-timeline-note,#longer-outlook-page .hh-growth-comparison .hh-timeline-source{font-size:13px;line-height:1.6}
+#longer-outlook-page .hh-growth-comparison .hh-timeline-source a{display:inline-block;min-height:32px;padding:4px 0;text-underline-offset:3px}
+#longer-outlook-page .hh-growth-method{max-width:none;margin:16px 0 28px;font-size:13px;line-height:1.6;color:#405665}
+#longer-outlook-page .hh-growth-comparison a:focus-visible,#longer-outlook-page .hh-growth-comparison .v49-evidence-scroll:focus-visible{outline:3px solid #b36b30;outline-offset:3px}
+@media(max-width:520px){#longer-outlook-page .hh-growth-comparison>.hh-history-panel{padding:16px 12px}#longer-outlook-page .hh-growth-comparison h4.v49-lead{font-size:20px!important;min-height:0}#longer-outlook-page .hh-growth-comparison .v49-evidence{font-size:12px}#longer-outlook-page .hh-growth-comparison .v49-evidence th,#longer-outlook-page .hh-growth-comparison .v49-evidence td{padding:9px 5px}#longer-outlook-page .hh-growth-comparison .v49-evidence th:first-child{min-width:70px}#longer-outlook-page .hh-annualized-rates dd{font-size:24px}}
+@media print{#longer-outlook-page .hh-growth-comparison{grid-template-columns:1fr}#longer-outlook-page .hh-growth-comparison>.hh-history-panel{break-inside:avoid}#longer-outlook-page .hh-growth-comparison .v49-evidence-scroll{overflow:visible}}

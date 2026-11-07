@@ -1,0 +1,25 @@
+.scenario-assumptions-launcher{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:12px 0;color:#59686c;font:13px/1.4 system-ui,sans-serif}
+.scenario-assumptions-launcher button,.scenario-assumptions button{min-height:44px;padding:9px 13px;border:1px solid #9cacae;border-radius:4px;background:#fffdf9;color:#193e50;font:600 14px/1.4 system-ui,sans-serif;cursor:pointer}
+.scenario-assumptions-launcher button:hover,.scenario-assumptions button:hover{background:#eaf0ef}
+.scenario-assumptions-launcher button:focus-visible,.scenario-assumptions button:focus-visible,.scenario-assumptions summary:focus-visible{outline:3px solid #b18845;outline-offset:3px}
+.scenario-assumptions{box-sizing:border-box;width:min(760px,calc(100vw - 32px));max-width:760px;max-height:90dvh;margin:auto;padding:0;overflow:auto;overscroll-behavior:contain;border:1px solid #bcc9c8;border-radius:8px;background:#fbfaf6;color:#193e50;box-shadow:0 12px 60px #0004;font:15px/1.5 system-ui,sans-serif;text-align:left}
+.scenario-assumptions::backdrop{background:#19364b99}
+.scenario-assumptions *{box-sizing:border-box}
+.scenario-assumptions-header{position:sticky;top:0;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:20px 24px;background:#f1f4f2;border-bottom:1px solid #d8dfdc}
+.scenario-assumptions-header p{margin:0 0 7px;font-size:10px;font-weight:700;letter-spacing:.07em}
+.scenario-assumptions h2{margin:0;font:500 29px/1.15 Georgia,serif;letter-spacing:-.02em}
+.scenario-assumptions h2:focus{outline:none}
+.scenario-assumptions-header button{flex:none;white-space:nowrap}
+.scenario-assumptions-body{padding:16px 24px 24px}
+.scenario-assumptions-body>p{margin:0 0 16px}
+.scenario-assumptions-rates{margin:0 0 18px}
+.scenario-assumptions-rates>div{display:grid;grid-template-columns:175px 1fr;gap:18px;padding:13px 0;border-top:1px solid #d8dfdc}
+.scenario-assumptions-rates dt{font-weight:650}
+.scenario-assumptions-rates dt strong{display:block;margin-top:3px;color:#315e52;font-size:16px}
+.scenario-assumptions-rates dd{margin:0;font-size:14px;line-height:1.5}
+.scenario-assumptions-caution{padding:13px 16px;border-left:3px solid #b18845;background:#f3eee2;font-size:14px}
+.scenario-assumptions-scope{font-size:13px;color:#59686c}
+.scenario-assumptions-sources{border-top:1px solid #d8dfdc;padding-top:12px;font-size:12px;color:#59686c}
+.scenario-assumptions-sources summary{cursor:pointer;font-size:13px;font-weight:650;color:#193e50}
+.scenario-assumptions-sources p{margin:12px 0 0}
+@media(max-width:600px){.scenario-assumptions{width:calc(100vw - 16px);max-height:94dvh}.scenario-assumptions-header{padding:15px;gap:10px}.scenario-assumptions h2{font-size:24px}.scenario-assumptions-header p{font-size:9px}.scenario-assumptions-header button{padding:8px 10px}.scenario-assumptions-body{padding:15px}.scenario-assumptions-rates>div{grid-template-columns:1fr;gap:6px;padding:13px 0}.scenario-assumptions-rates dt strong{display:inline;margin-left:7px;font-size:15px}.scenario-assumptions-rates dd{font-size:14px}}

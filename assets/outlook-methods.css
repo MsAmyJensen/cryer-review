@@ -1,0 +1,7 @@
+/* Compact source notes for the Outlook; the chart and model are unchanged. */
+.outlook-detail .sources{padding:20px 0 0}
+.outlook-detail .sources .outlook-methods{margin:0;padding:16px 0;border-top:0}
+.outlook-detail .outlook-methods>summary{line-height:1.5;min-height:44px}
+.outlook-detail .outlook-methods>summary h2{display:inline;font-size:20px;font-weight:600;line-height:1.5;letter-spacing:-.02em;color:inherit;margin:0}
+.outlook-detail .outlook-methods>div{max-width:100%;overflow-wrap:anywhere}
+@media(max-width:700px){.outlook-detail .outlook-methods>summary h2{font-size:18px}}

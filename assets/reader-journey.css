@@ -1,0 +1,86 @@
+/* Reader navigation and supporting detail; financial charts retain their geometry. */
+.reader-next{padding:26px 0 30px;scroll-margin-top:95px}
+.reader-next h2{margin-bottom:16px}
+.reader-questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0 28px}
+.reader-questions a{display:flex;flex-direction:column;justify-content:center;min-height:68px;padding:15px 18px;border:1px solid #c4d3c1;border-radius:8px;background:#e8eee5;color:#214d40;text-decoration:none;font-size:15px;font-weight:650;line-height:1.4}
+.reader-questions a:hover{background:#dce6d9}
+.reader-questions a:focus-visible{outline:3px solid #b36b30;outline-offset:3px}
+.reader-questions small{display:block;margin-top:4px;color:#5d6a64;font-size:12px;font-weight:400}
+.brief-drivers{padding:28px 0;border-top:1px solid #d8dfdc}
+.brief-drivers h2{margin-bottom:20px}
+.brief-driver-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.brief-driver-grid h3{font-size:16px;line-height:1.3;margin-bottom:10px}
+.brief-driver-grid p{font-size:13px;line-height:1.6;color:#59686c}
+.brief-drivers>.small{margin-top:18px}
+.outlook-detail .hero{padding-bottom:22px}
+.outlook-recap{font-size:17px;line-height:1.65;max-width:900px;margin-top:20px}
+.outlook-detail .reader-questions{margin-top:0}
+.outlook-detail .section[id],.outlook-detail .sources[id],.outlook-detail #household-impact-summary{scroll-margin-top:70px}
+.outlook-detail .section>h2{margin-bottom:18px}
+.outlook-detail .section>p{max-width:900px}
+.outlook-detail .section-kicker{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#5d6a64;margin-bottom:10px}
+.outlook-detail .assumption{margin:16px 0}
+.outlook-detail .assumption button{font:650 14px/1.4 system-ui,sans-serif;min-height:44px;border:1px solid #9cacae;border-radius:4px;padding:10px 14px;background:#fffefa;color:#214d40;cursor:pointer}
+.outlook-detail .assumption button:focus-visible,.outlook-detail summary:focus-visible{outline:3px solid #b36b30;outline-offset:3px}
+.outlook-detail .assumption p:last-child{margin-bottom:0}
+.outlook-detail .chart-subtitle{max-width:none}
+.outlook-detail .chart-caption{margin:14px 12px 8px;font-size:13px;color:#5d6a64;line-height:1.6}
+.outlook-detail details.supporting-note{padding:18px 0;border-top:1px solid #d8ddd3;margin-top:20px;font-size:14px}
+.outlook-detail details.supporting-note>summary{cursor:pointer;color:#214d40;font-size:16px;font-weight:650}
+.outlook-detail details.supporting-note>div{padding-top:18px}
+.outlook-detail details.supporting-note p{margin-bottom:14px}
+.outlook-detail .savings-method{grid-column:1/-1;margin-top:0!important}
+.outlook-detail .savings{column-gap:36px;row-gap:18px}
+.outlook-detail .sources{padding-top:34px}
+.outlook-detail .sources>h2{font-size:32px}
+.outlook-detail .calculator-link{background:#e8eee5;border:1px solid #c4d3c1;border-radius:10px;padding:22px;margin:24px 0;color:#192f2b}
+.outlook-detail .calculator-link h3{margin-bottom:12px}
+.outlook-detail .calculator-link a{display:inline-block;margin-top:5px}
+.outlook-detail .project-table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:left;font-size:13px}
+.outlook-detail .project-table caption{caption-side:bottom;text-align:left;font-size:12px;color:#5d6a64;padding-top:12px}
+.outlook-detail .project-table th,.outlook-detail .project-table td{padding:12px 10px;border-bottom:1px solid #d8ddd3;vertical-align:top}
+.outlook-detail .project-table thead th{font-size:11px;background:#e8eee5}
+.outlook-detail .project-table th:first-child{width:19%}
+.outlook-detail .project-table th:nth-child(2){width:15%}
+.outlook-detail .project-table th:nth-child(3){width:33%}
+.outlook-detail .project-table small,.outlook-detail .project-table .status,.outlook-detail .project-table .status+span{display:block}
+.outlook-detail .project-table small,.outlook-detail .project-table .status+span{font-size:12px;font-weight:400;color:#5d6a64}
+.outlook-detail .project-table .status{font-size:12px;font-weight:650;color:#876333}
+.outlook-detail .project-table .status.known{color:#214d40}
+.outlook-detail .project-table a{color:#214d40;text-underline-offset:3px}
+.outlook-detail .project-table a:focus-visible{outline:3px solid #b36b30;outline-offset:3px}
+.outlook-detail .project-basis{margin-top:16px;font-size:12px;color:#5d6a64}
+@media(max-width:700px){.reader-questions,.brief-driver-grid{grid-template-columns:1fr}.reader-questions{gap:9px}.reader-questions a{min-height:58px;padding:13px 15px}.brief-driver-grid{gap:20px}.brief-driver-grid>div+div{border-top:1px solid #d8dfdc;padding-top:18px}.outlook-recap{font-size:16px}.outlook-detail .sources>h2{font-size:28px}.outlook-detail .project-table,.outlook-detail .project-table tbody,.outlook-detail .project-table tr,.outlook-detail .project-table th,.outlook-detail .project-table td{display:block;width:100%!important}.outlook-detail .project-table thead{display:none}.outlook-detail .project-table tbody tr{padding:16px 0;border-top:1px solid #d8ddd3}.outlook-detail .project-table tbody th,.outlook-detail .project-table tbody td{border:0;padding:5px 0}.outlook-detail .project-table tbody th{font-size:18px}.outlook-detail .project-table td[data-label]::before{content:attr(data-label) ' · ';font-weight:650;font-size:12px}.outlook-detail .project-table caption{display:block}.outlook-detail .calculator-link{padding:18px}}
+
+/* Dated guidance for the five General Fund projects; other project entries are unchanged. */
+.outlook-detail .project-guidance-table{font-size:14px;line-height:1.55}
+.outlook-detail .project-guidance-table th:first-child{width:19%}
+.outlook-detail .project-guidance-table th:nth-child(2){width:32%}
+.outlook-detail .project-guidance-table th:nth-child(3){width:49%}
+.outlook-detail .project-guidance-table th,.outlook-detail .project-guidance-table td{padding:16px 12px}
+.outlook-detail .project-guidance-table td p:last-child{margin-bottom:0}
+.outlook-detail .project-guidance-table .project-estimate{display:block;margin-top:12px;font-size:12px;font-weight:400;color:#5d6a64}
+.outlook-detail .project-guidance-table .project-estimate strong{display:block;font-size:17px;color:#214d40}
+.outlook-detail .project-guidance-table .project-guidance-sources{font-size:12px;line-height:1.7}
+.outlook-detail .project-guidance-table .project-confirm{padding-top:12px;border-top:1px solid #d8ddd3}
+.outlook-detail .project-date-note{color:#5d6a64;font-size:13px;line-height:1.65}
+.outlook-detail .project-next-decision{padding:18px 20px;margin:24px 0 18px;background:#e8eee5;border:1px solid #c4d3c1;border-radius:8px}
+.outlook-detail .project-next-decision h3{font-size:17px;margin:0 0 10px;color:#214d40}
+.outlook-detail .project-next-decision p{margin-bottom:0!important}
+@media(max-width:700px){.outlook-detail .project-guidance-table tbody th,.outlook-detail .project-guidance-table tbody td{padding:8px 0}.outlook-detail .project-guidance-table td[data-label]::before{display:block;margin-bottom:8px;content:attr(data-label);font-size:12px;color:#5d6a64;text-transform:uppercase;letter-spacing:.04em}.outlook-detail .project-guidance-table .project-estimate strong{display:inline;margin-left:6px}.outlook-detail .project-guidance-table tbody tr{padding:20px 0}.outlook-detail .project-next-decision{padding:16px}}
+
+.outlook-detail #project-commitments,.outlook-detail .project-guidance-table tr[id]{scroll-margin-top:90px}
+
+/* Matched Outlook openings and readable on-page assumption explanations. */
+.utilities-outlook .hero{padding-bottom:22px}
+.utilities-outlook .reader-questions{margin-top:0}
+.utilities-outlook .section[id],.utilities-outlook .sources[id]{scroll-margin-top:70px}
+.outlook-detail .outlook-spending-rates{max-width:900px;margin:22px 0 28px;border-top:1px solid #c4d3c1}
+.outlook-detail .outlook-spending-rates>div{display:grid;grid-template-columns:minmax(170px,220px) minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid #d8ddd3;break-inside:avoid}
+.outlook-detail .outlook-spending-rates dt{font-weight:650;color:#214d40}
+.outlook-detail .outlook-spending-rates dt strong{display:block;margin-top:4px;font-size:19px;font-variant-numeric:tabular-nums}
+.outlook-detail .outlook-spending-rates dd{margin:0;line-height:1.6}
+.outlook-detail .outlook-funding-heading{margin:26px 0 14px}
+.outlook-detail .outlook-assumption-sources{max-width:900px;overflow-wrap:anywhere}
+.outlook-detail .outlook-assumption-sources>summary{min-height:44px;line-height:1.5;padding:8px 0}
+@media(max-width:700px){.outlook-detail .outlook-spending-rates>div{grid-template-columns:minmax(0,1fr);gap:8px;padding:16px 0}.outlook-detail .outlook-spending-rates dt strong{display:inline;margin-left:8px}.utilities-outlook .hero{padding-bottom:22px}}

@@ -4,6 +4,7 @@
  const D=window.townLedgerGapDetailData;if(!D)return;
  const root=new URL('../',document.currentScript.src),cash=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0,currencySign:'accounting'}).format(Math.round(n)),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const label={spending:'Spending & set-asides',funding:'Funding before additional savings'};
+ const basis=r=>r.year===2027?'May recommended budget · June amended budget adopted; final line-item reconciliation pending':r.basis;
  const link=s=>`<a href="${esc(new URL(s.href,root).href)}" target="_blank" rel="noopener">${esc(s.label)} ↗</a>`;
  const dialog=document.createElement('dialog');dialog.className='gap-backup';dialog.setAttribute('aria-labelledby','gap-backup-title');
  dialog.innerHTML=`<div class="gap-backup-bar"><button type="button" data-gap-close>← Back to gap chart</button><span>GENERAL FUND · CHART BACKUP</span></div><div class="gap-backup-body"><h2 id="gap-backup-title" tabindex="-1"></h2><p id="gap-backup-basis"></p><div class="gap-backup-controls"><label>Fiscal year<select id="gap-backup-year">${D.rows.map(r=>`<option value="${r.year}">FY${r.year}</option>`).join('')}</select></label><label>Chart line<select id="gap-backup-line"><option value="spending">Spending & set-asides</option><option value="funding">Funding</option></select></label></div><div id="gap-backup-content" aria-live="polite"></div></div>`;
@@ -18,7 +19,7 @@
  }
  function render(){
   const r=D.rows.find(r=>r.year===+$('#gap-backup-year').value),kind=$('#gap-backup-line').value;
-  $('#gap-backup-title').textContent=`FY${r.year} · ${label[kind]}`;$('#gap-backup-basis').textContent=r.basis;
+  $('#gap-backup-title').textContent=`FY${r.year} · ${label[kind]}`;$('#gap-backup-basis').textContent=basis(r);
   const scope=kind==='funding'?'Annual General Fund funding, excluding utility reimbursements.':'Annual General Fund spending and set-asides, net of utility reimbursements. Loan payments and project contributions are already counted in spending; full construction costs are not added again.';
   let out=`<div class="gap-proof"><strong>${cash(r[kind])}</strong><span>Matches the ${kind} line · $${(r[kind]/1e6).toFixed(1)}M on the graph</span></div><p class="gap-scope">${scope}</p>`;
   const fundingNote=kind==='funding'?`<p class="gap-scope">Funding adds taxes, other receipts and incoming transfers. Utility reimbursements of ${cash(r.utility)} are excluded; no additional use of savings is assumed.</p>`:'';
@@ -38,14 +39,14 @@
   out+=`<p class="gap-source-note">Source links open separately, keeping this backup and your return to the chart in place. ${link({label:'Existing loan project and payment detail',href:`evidence/Cryer-General-Fund-Loan-Projects-Source-Links-2026-10-16.html?year=${r.year}`})}</p>`;
   $('#gap-backup-content').innerHTML=out;
  }
- function open(year,kind,from){returnFocus=from;$('#gap-backup-year').value=year;$('#gap-backup-line').value=kind;render();hideTip();dialog.showModal();dialog.scrollTop=0;$('#gap-backup-title').focus({preventScroll:true});}
+ function open(year,kind,from){window.townLedgerPeriod?.set(year);returnFocus=from;$('#gap-backup-year').value=year;$('#gap-backup-line').value=kind;render();hideTip();dialog.showModal();dialog.scrollTop=0;$('#gap-backup-title').focus({preventScroll:true});}
  $('[data-gap-close]').addEventListener('click',()=>dialog.close());
  dialog.addEventListener('close',()=>{hideTip();returnFocus?.focus({preventScroll:true});});
  for(const sel of ['#gap-backup-year','#gap-backup-line'])$(sel).addEventListener('change',render);
  const tip=document.createElement('div');tip.className='gap-point-tip';tip.id='gap-point-tip';tip.setAttribute('role','tooltip');tip.hidden=true;document.body.append(tip);
  let tipPoint=null;
  function hideTip(){tip.hidden=true;tipPoint?.point.removeAttribute('data-gap-active');tipPoint?.point.ownerSVGElement.removeAttribute('data-gap-near');tipPoint=null;}
- function showTip(point,r,kind){if(tipPoint?.point!==point)hideTip();tipPoint={point,r,kind};point.setAttribute('data-gap-active','');point.ownerSVGElement.setAttribute('data-gap-near','');tip.textContent=`FY${r.year} · ${label[kind]}: ${cash(r[kind])} · ${r.basis}. Select for backup.`;tip.hidden=false;const b=point.getBoundingClientRect();tip.style.left=Math.max(8,Math.min(innerWidth-tip.offsetWidth-8,b.x+b.width/2-tip.offsetWidth/2))+'px';tip.style.top=Math.max(8,b.y-tip.offsetHeight-12)+'px';}
+ function showTip(point,r,kind){if(tipPoint?.point!==point)hideTip();tipPoint={point,r,kind};point.setAttribute('data-gap-active','');point.ownerSVGElement.setAttribute('data-gap-near','');tip.textContent=`FY${r.year} · ${label[kind]}: ${cash(r[kind])} · ${basis(r)}. Select for backup.`;tip.hidden=false;const b=point.getBoundingClientRect();tip.style.left=Math.max(8,Math.min(innerWidth-tip.offsetWidth-8,b.x+b.width/2-tip.offsetWidth/2))+'px';tip.style.top=Math.max(8,b.y-tip.offsetHeight-12)+'px';}
  document.addEventListener('keydown',e=>{if(e.key==='Escape')hideTip();});window.addEventListener('scroll',()=>{if(tipPoint&&document.activeElement===tipPoint.point&&!dialog.open)showTip(tipPoint.point,tipPoint.r,tipPoint.kind);else hideTip();},true);window.addEventListener('resize',hideTip);
  document.querySelectorAll('[data-gap-chart]').forEach((host,index)=>{
   const svg=host.querySelector('svg');if(!svg)return;
@@ -62,7 +63,7 @@
    const points=[...svg.querySelectorAll(`circle[fill="${color}"][r="4.5"]`)];
    if(points.length!==D.rows.length)continue;
    points.forEach((point,i)=>{
-    const r=D.rows[i];point.setAttribute('tabindex','0');point.setAttribute('role','button');point.setAttribute('data-gap-point',`${kind}-${r.year}`);point.setAttribute('aria-haspopup','dialog');point.setAttribute('aria-label',`FY${r.year} ${label[kind]}: ${cash(r[kind])}. ${r.basis}. Show backup.`);point.setAttribute('aria-describedby','gap-point-tip');
+    const r=D.rows[i];point.setAttribute('tabindex','0');point.setAttribute('role','button');point.setAttribute('data-gap-point',`${kind}-${r.year}`);point.setAttribute('aria-haspopup','dialog');point.setAttribute('aria-label',`FY${r.year} ${label[kind]}: ${cash(r[kind])}. ${basis(r)}. Show backup.`);point.setAttribute('aria-describedby','gap-point-tip');
     pointData.push({point,r,kind});
     point.addEventListener('focus',()=>{showTip(point,r,kind);requestAnimationFrame(()=>{if(document.activeElement===point&&!dialog.open)showTip(point,r,kind);});});point.addEventListener('blur',hideTip);point.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();open(r.year,kind,point);}});
    });
@@ -79,7 +80,14 @@
   svg.addEventListener('pointerleave',hideTip);
   svg.addEventListener('click',event=>{const item=nearestPoint(event);if(item)open(item.r.year,item.kind,item.point);});
   const lookup=document.createElement('div');lookup.className='gap-lookup';lookup.innerHTML=`<div><strong>See the numbers behind either line</strong><p>Hover or focus a dot for its value. Select a dot, or choose a year here, for components and source records.</p></div><label for="gap-lookup-year-${index}">Fiscal year<select id="gap-lookup-year-${index}">${D.rows.map(r=>`<option value="${r.year}"${r.year===2039?' selected':''}>FY${r.year}</option>`).join('')}</select></label><button type="button" data-kind="spending">Spending detail</button><button type="button" data-kind="funding">Funding detail</button>`;
-  const figure=host.closest('figure');(figure||host).after(lookup);
+  const figure=host.closest('figure'),projects=figure?.querySelector('.debt-link-panel');
+  if(projects){
+   lookup.className='debt-link-panel gap-lookup-projects';
+   const controls=document.createElement('div');controls.className='gap-lookup-controls';
+   controls.append(...lookup.querySelectorAll('label,button'));lookup.append(controls);
+   lookup.querySelectorAll('button').forEach(button=>button.classList.add('debt-link'));
+   projects.after(lookup);
+  }else (figure||host).after(lookup);
   lookup.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>open(+lookup.querySelector('select').value,b.dataset.kind,b)));
  });
 })();

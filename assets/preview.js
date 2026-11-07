@@ -7,7 +7,7 @@
  window.addEventListener('pagehide',()=>{pageActive=false;});
  window.addEventListener('pageshow',()=>{pageActive=true;});
  const gf='Cryer-Future-Outlook-General-Fund-Source-Links-2026-10-16.html',ws='Cryer-Future-Outlook-Utilities-Source-Links-2026-10-16.html',loan='Cryer-General-Fund-Loan-Projects-Source-Links-2026-10-16.html';
- const chapters={welcome:['Welcome','welcome.html'],pay:['What do I pay?','index.html#relationships'],future:['Future Outlook',gf],money:['Follow the money','index.html#gf-revenue'],who:['Who pays?','who-pays/Who_Pays_Preview_v7_2026-10-19.html'],funding:['Where does funding come from?','index.html#revenue'],services:['What does it pay for?','index.html#services'],projects:['Projects, capital & debt','index.html#projects']};
+ const chapters={welcome:['Welcome','welcome.html'],pay:['What do I pay?','index.html#relationships'],future:['Outlook, debt & savings',gf],money:['Follow the money','index.html#gf-revenue'],who:['Who pays?','who-pays/Who_Pays_Preview_v7_2026-10-19.html'],funding:['Where does funding come from?','index.html#revenue'],services:['What does it pay for?','index.html#services'],projects:['Projects, capital & debt','index.html#projects']};
  const secondary={priorities:'index.html#priorities','budget-process':'index.html#reference-budget-process',records:'index.html#records',reference:'index.html#reference',summary:'index.html#cryer-summary',changes:'index.html#what-changed','shared-costs':'index.html#flows','who-sources':'who-pays/References_v7_2026-10-19.html','loan-projects':loan,'loan-rail':loan+'#loan-a','loan-fire':loan+'#loan-b','loan-north':loan+'#loan-c','loan-ladder':loan+'#loan-d','loan-south':loan+'#loan-e'};
  const participationAliases={engage:'engage',priorities:'engage',participate:'engage','detail=priorities':'engage',impact:'impact','cryer-summary':'impact','what-changed':'impact','detail=summary':'impact','detail=changes':'impact'};
  const files=new Set(['index.html','welcome.html',gf,ws,loan,'Cryer-Water-Sewer-Loan-Projects-Source-Links-2026-10-16.html','source-notes.html','who-pays/Who_Pays_Preview_v7_2026-10-19.html','who-pays/References_v7_2026-10-19.html']);
@@ -31,18 +31,21 @@
  function saveHousehold(){try{sessionStorage.setItem(householdKey,JSON.stringify({home:$('home-value').value,location:$('home-location').value,example}));}catch{/* The calculator still works when browser storage is unavailable. */}}
  function renderBill(){
   if(!pageActive)return;
-  const h=household(),now=currentBill(h,D['quick-data'].rates),future=computeImpact(D['household-utility-data'],h,selection);
+  const h=household(),p=window.townLedgerPeriod.get();selection.year=p.to;
+  const now=currentBill(h,D['quick-data'].rates),future=computeImpact(D['household-utility-data'],h,selection),first=p.from===p.to?null:computeImpact(D['household-utility-data'],h,{...selection,year:p.from});
+  $('current-tax-label').textContent=first?'ILLUSTRATION · FY'+p.from:'CURRENT RATES · FY2027';$('future-tax-label').textContent='ILLUSTRATION · FY'+p.to;
   $('home-note').textContent=example?'Example value: $400,000. Replace it with your taxable home value.':'Uses your entry. Nothing is sent or published.';
   $('home-value').disabled=h.location==='outside';
   if(future.status==='outside'){
    $('current-tax').textContent='$0';$('future-tax').textContent='$0';$('bill-message').textContent='A property outside Town limits does not owe Hillsborough Town property tax. This scenario adds no Town property tax to it. Applicable County taxes and utility charges remain separate.';$('bill-breakdown').textContent='The Town property-tax share calculation does not apply to outside-Town property.';return;
   }
-  if(now.error||future.status!=='ready'){
+  if(now.error||future.status==='invalid'){
    $('current-tax').textContent='—';$('future-tax').textContent='—';$('bill-message').textContent='Enter a taxable home value of zero or more. A blank or invalid entry is not a zero tax bill.';$('bill-breakdown').textContent='No tax estimate is calculated until the input is valid.';return;
   }
-  $('current-tax').textContent=money(now.tax);$('future-tax').textContent=money(future.total);
-  $('bill-message').textContent='This scenario assumes your share of Town tax collections stays fixed and property taxes cover the entire annual gap. It is not an adopted bill. County taxes and utility charges are separate.';
-  $('bill-breakdown').textContent=`FY2039: ${money(future.baseline)} before filling the gap + ${money(future.gapShare)} toward that year’s shortfall = ${money(future.total)} in annual Town property tax. The calculation uses only the FY2039 annual gap of ${money(future.annualGap)}, not the cumulative shortfall.`;
+  $('current-tax').textContent=first?(first.status==='ready'?money(first.total):'Unavailable'):money(now.tax);$('future-tax').textContent=future.status==='ready'?money(future.total):'Unavailable';
+  if(future.status!=='ready'||first&&first.status!=='ready'){$('bill-message').textContent='Personalized historical tax bills are unavailable before FY2026. This model does not apply a current home value to historical tax years or combine those years with utility fiscal snapshots. Supported endpoints remain labeled individually.';$('bill-breakdown').textContent='The selected range compares annual endpoints, not a cumulative total. Tax illustrations are available for FY2026–FY2039.';return;}
+  $('bill-message').textContent=(p.from!==p.to?'The two figures are annual endpoint illustrations, not a sum of the range. ':'')+'This scenario assumes your share of Town tax collections stays fixed and property taxes cover the entire annual gap. It is not an adopted bill. County taxes and utility charges are separate.';
+  $('bill-breakdown').textContent=`FY${p.to}: ${money(future.baseline)} before filling the gap + ${money(future.gapShare)} toward that year’s shortfall = ${money(future.total)} in annual Town property tax. The calculation uses only the FY${p.to} annual gap of ${money(future.annualGap)}, not the cumulative shortfall.`;
  }
  $('bill-form').addEventListener('submit',e=>e.preventDefault());
  for(const id of ['home-value','home-location'])$(id).addEventListener(id==='home-value'?'input':'change',()=>{if(id==='home-value')example=false;saveHousehold();renderBill();});
@@ -109,11 +112,12 @@
   if(setSrc&&target.pathname===new URL('index.html',evidence).pathname&&target.hash==='#welcome')view='welcome.html';
   if(target.pathname===new URL('index.html',evidence).pathname&&['#gf-outlook','#gf-classic-overview'].includes(target.hash))view=gf;
   if(!allowed(view))return false;
+  const explicitYear=Number(target.searchParams.get('year'));if(setSrc&&/General-Fund-Loan-Projects/.test(target.pathname)&&explicitYear>=2018&&explicitYear<=2039)window.townLedgerPeriod.set(explicitYear);
   if(budgetView(view))rememberBudgetReturn();
   const chapter=classify(view),route=new URL(view,evidence).hash.slice(1);
   document.body.classList.toggle('welcome-open',chapter==='welcome');
   $('participation-view').hidden=true;$('brief-view').hidden=true;$('detail-view').hidden=false;document.body.classList.add('details-open');
-  $('detail-label').textContent=chapter?chapters[chapter][0]:D['route-data'][route]?.title||'Sources & supporting detail';
+  $('detail-label').textContent=D['route-data'][route]?.page==='longer-outlook-page'?'General Fund data & calculations':chapter?chapters[chapter][0]:D['route-data'][route]?.title||'Sources & supporting detail';
   $('open-detail').href=new URL(view,evidence).href;mark(['priorities','cryer-summary'].includes(route)?'priorities':chapter);closeMenu();window.scrollTo(0,0);
   if(setSrc&&(force||view!==lastView||view!==readyView||!frameIsAt(view)||!$('detail-error').hidden)){
    clearLoadState();readyView=null;pendingView=view;lastView=view;frame.removeAttribute('data-view-ready');frame.setAttribute('aria-busy','true');loadTimer=setTimeout(()=>showLoadNotice(false),12000);
@@ -122,7 +126,7 @@
    const href=new URL(view,evidence).href;
    try{if(frameIsAt(view))frame.contentWindow.location.reload();else if(frame.contentWindow.location.origin===location.origin)frame.contentWindow.location.replace(href);else frame.src=href;}catch{frame.src=href;}
   }
-  else if(setSrc&&!pendingView&&chapter!=='welcome')frame.contentWindow.postMessage({channel:'town-ledger-local-preview',type:'household',household:household()},'*');
+  else if(setSrc&&!pendingView&&chapter!=='welcome'){frame.contentWindow.postMessage({channel:'town-ledger-local-preview',type:'household',household:household()},'*');frame.contentWindow.postMessage({channel:'town-ledger-period',period:window.townLedgerPeriod.get()},location.origin);}
   if(budgetView(view)){const section=participationAliases[budgetReturn().slice(1)];if(section)mark(section==='engage'?'priorities':'impact');sendBudgetBackContext();}
   document.title=chapter==='welcome'?'Town Ledger · Inform. Empower. Impact.':'Town Ledger · '+$('detail-label').textContent;return true;
  }
@@ -152,10 +156,13 @@
    if(!['ready','route'].includes(message.type)||!allowed(message.view)||!sameDocumentAndAnchor(message.view,pendingView))return;
    // Reveal only the requested view after its shared navigation bridge is ready.
    readyView=lastView;pendingView=null;clearLoadState();frame.setAttribute('data-view-ready','');
+   frame.contentWindow.postMessage({channel:'town-ledger-period',period:window.townLedgerPeriod.get()},location.origin);
+   if(classify(message.view)!=='welcome')frame.contentWindow.postMessage({channel:'town-ledger-local-preview',type:'household',household:household()},'*');
   }
   if(message.type==='back'&&budgetView(lastView)&&budgetView(message.view)&&sameDocumentAndAnchor(message.view,lastView)){location.hash=budgetReturn();return;}
   if(message.type==='navigate'&&allowed(message.view)){location.hash='view='+encodeURIComponent(message.view);}
   if(message.type==='ready'){
+   frame.contentWindow.postMessage({channel:'town-ledger-period',period:window.townLedgerPeriod.get()},location.origin);
    sendBudgetBackContext();
    if(allowed(message.view)&&message.view!==lastView){lastView=message.view;history.replaceState(null,'','#view='+encodeURIComponent(message.view));handledHash=location.hash;displayDetail(message.view,false);}
    if(classify(message.view)!=='welcome')frame.contentWindow.postMessage({channel:'town-ledger-local-preview',type:'household',household:household()},'*');
@@ -171,6 +178,7 @@
  requestAnimationFrame(positionGraph);
  window.addEventListener('resize',()=>{if(!$('brief-view').hidden)positionGraph();});
  graph?.addEventListener('scroll',()=>{$('graph-scroll-hint').textContent=graph.scrollLeft>10?'Swipe or scroll left for the earlier years.':'Swipe or scroll right to see the FY2039 gap.';},{passive:true});
+ window.addEventListener('townledger:period',event=>{renderBill();if(!event.detail.remote&&!$('detail-view').hidden&&frame.contentWindow)frame.contentWindow.postMessage({channel:'town-ledger-period',period:window.townLedgerPeriod.get()},location.origin);});
  restoreHousehold();saveHousehold();renderBill();route();
  document.documentElement.classList.remove('route-starting');
 })();

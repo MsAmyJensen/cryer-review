@@ -36,14 +36,16 @@
  @media(max-width:650px){.town-ledger-framed-preview .wrap{padding-left:18px!important;padding-right:18px!important}.preview-period{padding:8px 14px}}
  `;document.head.appendChild(style);
  const period=document.querySelector('#site-menu .period-picker'),stage=document.querySelector('.stage');
- if(period&&stage){const details=document.createElement('details');details.className='preview-period';const summary=document.createElement('summary');summary.textContent='Years & range';details.append(summary,period);stage.prepend(details);}
+ if(period&&stage){const details=document.createElement('details');details.className='preview-period';details.hidden=period.hidden;const summary=document.createElement('summary');summary.textContent='Years & range';details.append(summary,period);stage.prepend(details);}
  function post(type,values={}){if(['ready','route'].includes(type)&&routeParticipation())return;parent.postMessage({channel,type,...values},'*');}
- function view(){const u=new URL(location.href);return decodeURIComponent(u.pathname.slice(root.pathname.length))+u.search+u.hash;}
+ function view(){const u=new URL(location.href);if(document.body.dataset.route==='source-record'&&window.cryerSources?.capture())u.searchParams.set('record',window.cryerSources.capture());else u.searchParams.delete('record');return decodeURIComponent(u.pathname.slice(root.pathname.length))+u.search+u.hash;}
  let applyingHousehold=false;
  function household(){const home=document.getElementById('hh-home')||document.getElementById('review-household-home'),location=document.getElementById('hh-location')||document.getElementById('review-household-location');return home&&location?{home:home.value.replace(/,/g,''),location:location.value,example:false}:null;}
  document.addEventListener('click',event=>{
   const a=event.target.closest('a[href]');if(!a||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||a.target==='_blank')return;
-  const url=new URL(a.href,location.href);
+  const url=new URL(a.getAttribute('href'),location.href);
+  // Return through the parent router, keeping the loaded calculator and its choices.
+  if(url.pathname===new URL('../index.html',root).pathname&&url.hash==='#brief'){event.preventDefault();event.stopImmediatePropagation();post('overview');return;}
   const section=url.pathname===new URL('index.html',root).pathname?participationRoutes[url.hash.slice(1)]:null;
   if(section){event.preventDefault();event.stopImmediatePropagation();post('participation',{section});return;}
   if(url.pathname===new URL('index.html',root).pathname&&url.hash==='#reference-budget-process'){
@@ -62,6 +64,7 @@
   setTimeout(()=>post('route',{view:view()}),0);
  });
  window.addEventListener('cryer:route',()=>setTimeout(()=>post('route',{view:view()}),0));
+ window.addEventListener('townledger:route',()=>setTimeout(()=>post('route',{view:view()}),0));
  for(const type of ['input','change'])document.addEventListener(type,e=>{if(!applyingHousehold&&['hh-home','hh-location','review-household-home','review-household-location'].includes(e.target.id)){const h=household();if(h)post('household',{household:h});}});
  document.addEventListener('change',e=>{if(e.target.tagName==='SELECT')setTimeout(()=>post('route',{view:view()}),0);});
  window.addEventListener('message',event=>{

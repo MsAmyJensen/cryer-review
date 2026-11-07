@@ -1,0 +1,15 @@
+/* A readable fund name distinguishes the otherwise matched Outlook headers. */
+.outlook-detail{--outlook-fund-ink:#214d40;--outlook-fund-tint:#e8eee5}
+.utilities-outlook{--outlook-fund-ink:#1c5470;--outlook-fund-tint:#e8f1f5}
+.outlook-detail .hero .outlook-context,
+.utilities-outlook .hero .outlook-context{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:18px}
+.outlook-detail .hero .outlook-fund-label,
+.utilities-outlook .hero .outlook-fund-label{display:inline-block;max-width:100%;padding:8px 12px;border-left:4px solid var(--outlook-fund-ink);border-radius:4px;background:var(--outlook-fund-tint);color:var(--outlook-fund-ink);font-size:16px;font-weight:800;line-height:1.35;letter-spacing:.06em;overflow-wrap:anywhere}
+@media print{
+.outlook-detail .hero .outlook-fund-label,
+.utilities-outlook .hero .outlook-fund-label{color:#000;background:none;border-color:#000}
+}
+@media(forced-colors:active){
+.outlook-detail .hero .outlook-fund-label,
+.utilities-outlook .hero .outlook-fund-label{color:CanvasText;background:Canvas;border-color:CanvasText}
+}

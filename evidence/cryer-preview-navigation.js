@@ -7,7 +7,7 @@
   const defaultSelection = data ? {
     taxCase: Object.keys(data.tax_alternatives)[0],
     gfCase: Object.keys(Object.values(data.tax_alternatives)[0].by_gf_case)[0],
-    utilityCase: 'historical_rate_growth', year: 2039
+    utilityCase: 'historical_rate_growth', year: window.townLedgerPeriod?.get().to ?? 2039
   } : null;
   function householdShape(h) {
     return h && ['inside', 'outside'].includes(h.location)
@@ -20,7 +20,7 @@
     if (!householdShape(value?.household) || !value.selection) return null;
     const s = value.selection;
     if (!data?.tax_alternatives[s.taxCase]?.by_gf_case[s.gfCase]) return null;
-    return {household: {...value.household}, selection: {...s, year: 2039}};
+    return {household: {...value.household}, selection: {...s, year: window.townLedgerPeriod?.get().to ?? 2039}};
   }
   function read() {
     try { return normalize(JSON.parse(sessionStorage.getItem(key) || 'null')); }
@@ -37,7 +37,7 @@
     return {household: window.cryerHousehold.get(), selection: {
       taxCase: window.cryerHouseholdProjection.getTaxCase(),
       utilityCase: window.cryerHouseholdProjection.getUtilityCase(),
-      gfCase: window.cryerOutlook.getScenario(), year: 2039
+      gfCase: window.cryerOutlook.getScenario(), year: window.townLedgerPeriod?.get().to ?? 2039
     }};
   }
   function restore() {
@@ -59,7 +59,7 @@
   document.addEventListener('click', event => {
     const anchor = event.target.closest('a[href]');
     if (!anchor || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || anchor.target === '_blank' || !window.cryerHousehold) return;
-    const target = new URL(anchor.href, location.href);
+    const target = new URL(anchor.getAttribute('href'), location.href);
     if (new URL('.', target).href !== new URL('.', location.href).href
       || !/\/(?:Cryer-Future-Outlook-(?:General-Fund|Utilities)|Cryer-(?:General-Fund|Water-Sewer)-Loan-Projects)-Source-Links-2026-10-16\.html$/.test(target.pathname)) return;
     save(capture());
