@@ -28,15 +28,12 @@
  .town-ledger-framed-preview .strip,.town-ledger-framed-preview header>.brand{display:none!important}
  .town-ledger-framed-preview .wrap>header{justify-content:flex-end;padding:18px 0}
  .town-ledger-framed-preview .wrap{max-width:1280px!important}
- .town-ledger-framed-preview body[data-route="welcome"] .preview-period{display:none!important}
- .preview-period{background:#f2f4ef;border-bottom:1px solid #d8dfdc;padding:8px 20px;font:12px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#19364b;flex:none}
- .preview-period summary{cursor:pointer;font-weight:600}.preview-period .period-picker{padding:10px 0!important;margin:0!important;border:0!important;max-width:700px}
- .preview-period #period-edit{display:flex;gap:15px;flex-wrap:wrap;align-items:start}.preview-period label{max-width:210px}.preview-period select{font-size:12px;padding:6px}
- .preview-period .period-title,.preview-period #period-help{font-size:11px}.preview-period .period-range{display:flex;gap:10px}
- @media(max-width:650px){.town-ledger-framed-preview .wrap{padding-left:18px!important;padding-right:18px!important}.preview-period{padding:8px 14px}}
+ /* The page-owned year selectors are the visible controls. Keep the legacy
+    shared picker in the hidden navigation only as a compatibility target for
+    its state adapter; do not create another, space-consuming global toolbar. */
+ .town-ledger-framed-preview #period-context{display:none!important}
+ @media(max-width:650px){.town-ledger-framed-preview .wrap{padding-left:18px!important;padding-right:18px!important}}
  `;document.head.appendChild(style);
- const period=document.querySelector('#site-menu .period-picker'),stage=document.querySelector('.stage');
- if(period&&stage){const details=document.createElement('details');details.className='preview-period';details.hidden=period.hidden;const summary=document.createElement('summary');summary.textContent='Years & range';details.append(summary,period);stage.prepend(details);}
  function post(type,values={}){if(['ready','route'].includes(type)&&routeParticipation())return;parent.postMessage({channel,type,...values},'*');}
  function view(){const u=new URL(location.href);if(document.body.dataset.route==='source-record'&&window.cryerSources?.capture())u.searchParams.set('record',window.cryerSources.capture());else u.searchParams.delete('record');return decodeURIComponent(u.pathname.slice(root.pathname.length))+u.search+u.hash;}
  let applyingHousehold=false;
